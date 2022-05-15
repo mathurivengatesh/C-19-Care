@@ -1,0 +1,25 @@
+{
+  "name": "c-19-care",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo no test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathurivengatesh/C-19-Care.git"
+  },
+  "keywords": [
+    "project"
+  ],
+  "author": "ma3vnkts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathurivengatesh/C-19-Care/issues"
+  },
+  "homepage": "https://github.com/mathurivengatesh/C-19-Care#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
