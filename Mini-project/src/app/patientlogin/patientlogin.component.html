@@ -1,0 +1,66 @@
+<form
+  class="modal-content animate"
+  [formGroup]="login"
+  (ngSubmit)="onSubmit(login)"
+>
+  <div class="imgcontainer">
+    <span
+      routerLink="/home"
+      routerLinkActive="active"
+      class="close"
+      title="Close Modal"
+      >&times;</span
+    >
+    <img src="../../assets/images/avatar2.png" alt="Avatar" class="avatar" />
+  </div>
+
+  <div class="container">
+    <div>
+      <label for="uname"><b>Patient Id</b></label>
+      <input
+        type="text"
+        placeholder="Enter your Id"
+        formControlName="Patientid"
+        required
+      />
+      <div
+        *ngIf="
+          login.get('Patientid').invalid &&
+          (login.get('Patientid').dirty || login.get('Patientid').touched)
+        "
+        class="text-danger"
+      >
+        Please provide a Patient Id !
+      </div>
+    </div>
+    <div>
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        formControlName="psw"
+        required
+      />
+      <div
+        *ngIf="
+          login.get('psw').invalid &&
+          (login.get('psw').dirty || login.get('psw').touched)
+        "
+        class="text-danger"
+      >
+        Please enter your password !
+      </div>
+    </div>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" /> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color: #f1f1f1">
+    <button type="reset" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+<router-outlet></router-outlet>

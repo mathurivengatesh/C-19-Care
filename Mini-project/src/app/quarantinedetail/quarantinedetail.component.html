@@ -1,0 +1,463 @@
+<div class="container">
+  <div class="tab">
+    <ul>
+      <li
+        id="personalform"
+        [class.color]="id === 'personalform'"
+        (click)="tabchange('personalform')"
+      >
+        Personal Detail
+      </li>
+      <li
+        id="guardianform"
+        [class.color]="id === 'guardianform'"
+        (click)="tabchange('guardianform')"
+      >
+        Guardian Detail
+      </li>
+      <li
+        id="medicalreports"
+        [class.color]="id === 'medicalreports'"
+        (click)="tabchange('medicalreports')"
+      >
+        Medical Reports
+      </li>
+      <li
+        id="quaratineform"
+        [class.color]="id === 'quaratineform'"
+        (click)="tabchange('quaratineform')"
+      >
+        Quaratine Detail
+      </li>
+      <li
+        id="inchargeform"
+        [class.color]="id === 'inchargeform'"
+        (click)="tabchange('inchargeform')"
+      >
+        Patient Incharge
+      </li>
+    </ul>
+    <div class="content">
+      <div class="content-value" *ngIf="id === 'personalform'">
+        <div class="container-form">
+          <form action="" [formGroup]="myForm" (ngSubmit)="storing()">
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">First Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="fname"
+                  formControlName="fname"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+                <div *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)">
+                  <div [hidden]="!fname.errors.required" class="text-danger">
+                    First Name is required
+                  </div>
+                  <div [hidden]="!fname.errors.minlength" class="text-danger">
+                    Min Length is 10
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="lname">Last Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="lname"
+                  formControlName="lname"
+                  class="form-control"
+                  placeholder="enter last name.."
+                />
+                <div *ngIf="!lname.valid && (lname.dirty || lname.touched)">
+                  <div [hidden]="!lname.errors.pattern" class="text-danger">
+                    Only characters are allowed
+                  </div>
+                  <div [hidden]="!lname.errors.maxLength" class="text-danger">
+                    Max length allowed is
+                    {{ lname.errors.maxlength?.requiredLength }}
+                  </div>
+                  <div [hidden]="!lname.errors.required" class="text-danger">
+                    Last Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="patientid">Patient Id:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="patientid"
+                  formControlName="patientid"
+                  class="form-control"
+                  placeholder="enter patientid"
+                />
+                <div
+                  *ngIf="
+                    !patientid.valid && (patientid.dirty || patientid.touched)
+                  "
+                  class="text-danger"
+                >
+                  <div
+                    [hidden]="!patientid.errors.required"
+                    class="text-danger"
+                  >
+                    patientid is required
+                  </div>
+                  <div [hidden]="!patientid.errors.email" class="text-danger">
+                    invalid patientid id
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="dob">Date of Birth:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="date"
+                  id="dob"
+                  formControlName="dob"
+                  class="form-control"
+                  placeholder="enter DOB"
+                />
+                <div
+                  *ngIf="!dob.valid && (dob.dirty || dob.touched)"
+                  class="text-danger"
+                >
+                  <div [hidden]="!dob.errors.required">dob is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="age">Age:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="number"
+                  id="number"
+                  formControlName="age"
+                  class="form-control"
+                  placeholder="enter Age"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="bloodgroup">Blood Group:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="bloodgroup"
+                  formControlName="bloodgroup"
+                  class="form-control"
+                  placeholder="enter bloodgroup"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="gender">Gender</label>
+              </div>
+              <div class="col-75">
+                <select
+                  id="gender"
+                  formControlName="gender"
+                  class="form-control"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="mobileno">Mobile No:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="mobileno"
+                  formControlName="mobileno"
+                  class="form-control"
+                  placeholder="enter mobileno"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Address</label>
+              </div>
+              <div class="col-75">
+                <textarea
+                  id="subject"
+                  formControlName="address"
+                  class="form-control"
+                  placeholder="current location"
+                  style="height: 200px"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="content-value" *ngIf="id === 'guardianform'">
+        <div class="container-form">
+          <form action="/action_page.php">
+            <div class="row">
+              <div class="col-25">
+                <label for="relation"
+                  >Relationship Of Guardian To Patient:</label
+                >
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="relation"
+                  name="relation"
+                  placeholder="enter the relationship"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">First Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="fname"
+                  name="firstname"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="lname">Last Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="lname"
+                  name="lastname"
+                  placeholder="enter last name.."
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="dob">Date of Birth:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  placeholder="enter DOB"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="age">Age:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="number"
+                  id="number"
+                  name="number"
+                  placeholder="enter Age"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="bloodgroup">Blood Group:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="bloodgroup"
+                  name="bloodgroup"
+                  placeholder="enter bloodgroup"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="gender">Gender</label>
+              </div>
+              <div class="col-75">
+                <select id="gender" name="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="mobileno">Mobile No:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="mobileno"
+                  name="mobileno"
+                  placeholder="enter mobileno"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Address</label>
+              </div>
+              <div class="col-75">
+                <textarea
+                  id="subject"
+                  name="subject"
+                  placeholder="current location"
+                  style="height: 200px"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="content-value" *ngIf="id === 'medicalreports'">
+        <form action="">
+          <div class="radio-btn">
+            <p>
+              Does the patient currently taking any prescription medications
+              (including contraceptives & inhalers)?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>
+              Does the patient take any medications of your own accord
+              (including herbal, homeopathic & supplements)?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>Does the patient is pregnant?</p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>Have the patient taken any steroids in the past 2 years?</p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>
+              Does the patient have any medical conditions which are NOT being
+              treated with medications?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>
+              Does the patient (or any blood relatives) suffer from Diabetes or
+              Rheumatoid Arthritis?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>Have you ever been a smoker?</p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>
+              Does the patient have a blood-borne disease (i.e. HIV, Hepatitis
+              etc)?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>
+              Does the patient had any hospital operations (including
+              gynaecological & joint replacement surgery)?
+            </p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="radio-btn">
+            <p>Does the patient suffer from any allergies?</p>
+            <input type="radio" id="yes" name="fav_language" value="yes" />
+            <label for="yes">Yes</label><br />
+            <input type="radio" id="no" name="fav_language" value="no" />
+            <label for="no">No</label><br />
+          </div>
+          <div class="file">
+            <label for="myfile">COVID-Test Report:</label>
+            <input type="file" id="myfile" name="COVID-Test" /><br /><br />
+            <label for="myfile">ECG-Report:</label>
+            <input type="file" id="myfile" name="ECG-Report" /><br /><br />
+            <label for="myfile">MRI-Report:</label>
+            <input type="file" id="myfile" name="MRI-Report" /><br /><br />
+          </div>
+          <div class="submit">
+            <button class="btn-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="content-value" *ngIf="id === 'quaratineform'">
+        <h2>iam here</h2>
+        <p>iam mathuri</p>
+      </div>
+      <div class="content-value" *ngIf="id === 'inchargeform'">
+        <h2>iam here</h2>
+        <p>iam mathuri</p>
+      </div>
+    </div>
+  </div>
+</div>

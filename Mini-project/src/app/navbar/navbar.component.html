@@ -1,0 +1,86 @@
+<!-- <nav class="navbar bg-blue">
+  <div class="container flex">
+    <a href="./home.component.html" class="navbar-brand">
+      <h1 class="navbar-brand">C-19 care</h1>
+    </a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active"
+          >About</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+          >Contact</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/help" routerLinkActive="active"
+          >Help</a
+        >
+      </li>
+      <li class="btn-group">
+        <a class="btn btn-white" routerLink="/signup" routerLinkActive="active">
+          Sign Up
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+<div class="page">
+  <nav class="page__menu page__custom-settings menu">
+    <div class="header-img">
+      <img src="../../assets/images/design logo 2.png" />
+    </div>
+    <ul class="menu__list r-list">
+      <li class="menu__group">
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          class="menu__link r-link text-underlined"
+          >Home</a
+        >
+      </li>
+      <li class="menu__group">
+        <a
+          routerLink="/about"
+          routerLinkActive="active"
+          class="menu__link r-link text-underlined"
+          >About</a
+        >
+      </li>
+      <li class="menu__group">
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          class="menu__link r-link text-underlined"
+          >Contact</a
+        >
+      </li>
+      <li class="menu__group">
+        <a
+          routerLink="/help"
+          routerLinkActive="active"
+          class="menu__link r-link text-underlined"
+          >Help</a
+        >
+      </li>
+      <li class="menu__group">
+        <a
+          routerLink="/signup"
+          routerLinkActive="active"
+          class="menu__link r-link text-underlined"
+          >signup</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>
