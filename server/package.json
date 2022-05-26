@@ -1,7 +1,7 @@
 {
-  "name": "c-19-care",
+  "name": "server",
   "version": "1.0.0",
-  "description": "project",
+  "description": "node server",
   "main": "index.js",
   "scripts": {
     "test": "echo no test"
@@ -11,15 +11,19 @@
     "url": "git+https://github.com/mathurivengatesh/C-19-Care.git"
   },
   "keywords": [
-    "project"
+    "node",
+    "server"
   ],
-  "author": "ma3vnkts",
+  "author": "mathuri",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mathurivengatesh/C-19-Care/issues"
   },
   "homepage": "https://github.com/mathurivengatesh/C-19-Care#readme",
   "dependencies": {
-    "bootstrap": "^5.1.3"
+    "@cloudant/cloudant": "^4.5.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
   }
 }
