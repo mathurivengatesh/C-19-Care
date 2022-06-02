@@ -1,6 +1,6 @@
 <form
   class="modal-content animate"
-  [formGroup]="login"
+  [formGroup]="patientlogin"
   (ngSubmit)="onSubmit(login)"
 >
   <div class="imgcontainer">
@@ -52,7 +52,9 @@
       </div>
     </div>
 
-    <button type="submit">Login</button>
+    <button type="submit" routerLink="/patientpage" routerLinkActive="active">
+      Login
+    </button>
     <label>
       <input type="checkbox" checked="checked" name="remember" /> Remember me
     </label>

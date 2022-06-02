@@ -4,10 +4,12 @@ import { AboutComponent } from './about/about.component';
 import { AdminformComponent } from './adminform/adminform.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { ContactComponent } from './contact/contact.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
 import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientloginComponent } from './patientlogin/patientlogin.component';
+import { PatientpageComponent } from './patientpage/patientpage.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -18,13 +20,13 @@ const routes: Routes = [
 {path:'adminform', component:AdminformComponent},
 {path:'inchargedetail', component:InchargedetailComponent},
 {path:'quarantinedetail', component:QuarantinedetailComponent},
-
+{path:'patientpage',component:PatientpageComponent},
 {path:'about', component:AboutComponent},
 {path:'contact', component:ContactComponent},
 {path:'help', component:HelpComponent},
 {path:'adminlogin', component:AdminloginComponent},
-{path:'patientlogin', component:PatientloginComponent}
-
+{path:'patientlogin', component:PatientloginComponent},
+{path:'dashboard', component:DashboardComponent}
 ];
 
 @NgModule({

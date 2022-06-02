@@ -11,7 +11,7 @@ export class CouchdbService {
   dbPassword ='58de0ca6ebd4250a97d0a7d300191f68';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
 
-  personRecord:any={
+  object:any={
     fname:'',
     lname:'',
     patientid:'',
@@ -21,7 +21,7 @@ export class CouchdbService {
     gender:'',
     mobileno:'',
     address:'',
-    type:'personalform'
+    type:''
   }
 
   constructor(private http:HttpClient) { }
@@ -35,5 +35,11 @@ export class CouchdbService {
     // const url2 = `${this.url}${db}`;
     const url=this.url+db;
     return this.http.post(url, doc, this.httpOptions);
+  }
+  get(data:any): Observable<{}> {
+    // const url = this.url + db + '/_all_docs?include_docs=true';
+    const url = this.url +'c_19_care/_find';
+    return this.http.post( url,data, this.httpOptions)
+
   }
 }

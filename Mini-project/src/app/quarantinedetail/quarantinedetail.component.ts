@@ -10,6 +10,10 @@ import { CouchdbService } from '../couchdb.service';
 export class QuarantinedetailComponent implements OnInit {
 title='tabchange';
 myForm: FormGroup;
+guardianform:FormGroup;
+medicalreports:FormGroup;
+quaratineform:FormGroup;
+inchargeform:FormGroup;
   object:any={
     fname:'',
     lname:'',
@@ -20,7 +24,36 @@ myForm: FormGroup;
     gender:'',
     mobileno:'',
     address:'',
-    type:'personalform'
+    type:''
+  }
+  object1:any={
+    status:'',
+    gfname:'',
+    glname:'',
+    gdob:'',
+    gage:'',
+    gbloodgroup:'',
+    ggender:'',
+    gmobileno:'',
+    gaddress:'',
+    type:''
+  }
+  object2:any={
+    inhalers:'',
+    herbal:'',
+    pregnant:'',
+    steroids:'',
+    medical:'',
+    Diabetes:'',
+    smoker:'',
+    disease:'',
+    hospital:'',
+    allergies:'',
+    covidtest:'',
+    ecgreport:'',
+    mrireport:'',
+    type:''
+
   }
   constructor(private api:CouchdbService) {
    
@@ -40,9 +73,40 @@ myForm: FormGroup;
         
           gender: new FormControl('',[Validators.required]),
           mobileno: new FormControl('',[Validators.required]),
-          address:new FormControl('',[Validators.required])
-      
+          address:new FormControl('',[Validators.required]),
+          type:new FormControl('personalform')
       })
+      this.guardianform = new FormGroup({
+        status: new FormControl('',[Validators.required]),
+        gfname: new FormControl('',[Validators.required, Validators.minLength(10)]),
+        glname:new FormControl('',[Validators.required]),
+        gdob: new FormControl('',[Validators.required]),
+        gage: new FormControl('',[Validators.required]),
+        gbloodgroup: new FormControl('',[Validators.required]),
+        
+          ggender: new FormControl('',[Validators.required]),
+          gmobileno: new FormControl('',[Validators.required]),
+          gaddress:new FormControl('',[Validators.required]),
+          type:new FormControl('guardianform')
+      })
+      this.medicalreports = new FormGroup({
+        inhalers: new FormControl('',[Validators.required]),
+        herbal: new FormControl('',[Validators.required]),
+        pregnant:new FormControl('',[Validators.required]),
+        steroids: new FormControl('',[Validators.required]),
+        medical: new FormControl('',[Validators.required]),
+        Diabetes: new FormControl('',[Validators.required]),
+        
+        smoker: new FormControl('',[Validators.required]),
+        disease: new FormControl('',[Validators.required]),
+        hospital:new FormControl('',[Validators.required]),
+        allergies:new FormControl('',[Validators.required]),
+        covidtest:new FormControl('',[Validators.required]),
+        ecgreport:new FormControl('',[Validators.required]),
+        mrireport:new FormControl('',[Validators.required]),
+          type:new FormControl('medicalreports')
+      })
+      
     }
     addrecord(Formvalue:NgForm){
       console.log(Formvalue);
@@ -82,19 +146,97 @@ myForm: FormGroup;
       return this.myForm.get("address");
     } 
    
+    get status() {
+      return this.guardianform.get('status');
+    } 
+   
+    get gfname() {
+      return this.guardianform.get('fname');
+    } 
+   
+    get glname() {
+      return this.guardianform.get('lname');
+    } 
+   
+    get gdob() {
+      return this.guardianform.get('dob');
+    } 
+   
+    get gage() {
+      return this.guardianform.get('age');
+    } 
+   
+    get ggender() {
+      return this.guardianform.get('gender');
+    } 
+   
+    get gmobileno() {
+      return this.guardianform.get("mobileno");
+    } 
+   
+    get gaddress() {
+      return this.guardianform.get("address");
+    } 
+    get gbloodgroup() {
+      return this.guardianform.get("bloodgroup");
+    } 
+    get inhalers() {
+      return this.guardianform.get("inhalers");
+    } get herbal() {
+      return this.guardianform.get("herbal");
+    }
+    get pregnant() {
+      return this.guardianform.get("pregnant");
+    }get steroids() {
+      return this.guardianform.get("steroids");
+    }
+    get medical() {
+      return this.guardianform.get("medical");
+    } get Diabetes() {
+      return this.guardianform.get("diabetes");
+    }
+    get smoker() {
+      return this.guardianform.get("smoker");
+    }
+    get disease() {
+      return this.guardianform.get("disease");
+    }get hospital() {
+      return this.guardianform.get("hospital");
+    }
+    get allergies() {
+      return this.guardianform.get("allergies");
+    }
+    get covidtest() {
+      return this.guardianform.get("covidtest");
+    }
+    get ecgreport() {
+      return this.guardianform.get("ecgreport");
+    }
+    get mrireport() {
+      return this.guardianform.get("mrireport");
+    }
    
    
-   
-    storing(){
-      console.log(this.myForm);
+    storing(formdata){
+      console.log(formdata);
       // this.store.pushData(formdata);
-      this.api.add("c_19_care",this.myForm.value).subscribe(res=>{
+      this.api.add("c_19_care",formdata.value).subscribe(res=>{
         console.log(res);
         alert("Your data was posted successfully!");
       },rej=>{
         alert("Can not post data"+rej);
       });
     }
+    // storinga(){
+    //   console.log(this.guardianform);
+    //   // this.store.pushData(formdata);
+    //   this.api.add("c_19_care",this.guardianform.value).subscribe(res=>{
+    //     console.log(res);
+    //     alert("Your data was posted successfully!");
+    //   },rej=>{
+    //     alert("Can not post data"+rej);
+    //   });
+    // }
   
 id:any = "personalform";
 tabchange(ids:any){

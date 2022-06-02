@@ -9,7 +9,7 @@ var cloudant = Cloudant({ url: url, username: username, password: password });
 
 insert = function (paramsvalue) {
   console.log(paramsvalue);
-  cloudant
+  return cloudant
     .use("c_19_care")
     .insert(paramsvalue)
     .then((data) => {

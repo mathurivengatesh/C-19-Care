@@ -1,4 +1,4 @@
-<header class="header bg-blue">
+<!-- <header class="header bg-blue">
   <div class="header-inner text-white text-center">
     <div class="container grid">
       <div class="header-inner-left">
@@ -32,11 +32,32 @@
         </div>
       </div>
       <div class="header-inner-right">
-        <!-- <img src="../../assets/images/c20.jpg" /> -->
+         <img src="../../assets/images/c20.jpg" /> 
+        <img src="../../assets/images/home-img.svg" alt="home" />
       </div>
     </div>
   </div>
-</header>
+</header> -->
+<section class="home" id="home">
+  <div class="image">
+    <img src="../../assets/images/home-img.svg" alt="home" />
+  </div>
+
+  <div class="content">
+    <h3>stay safe, stay healthy</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem sed autem
+      vero? Magnam, est laboriosam!
+    </p>
+    <a routerLink="/adminlogin" routerLinkActive="active" class="btn">
+      Adminlogin <span class="fas fa-chevron-right"></span>
+    </a>
+    <a routerLink="/patientlogin" routerLinkActive="active" class="btn">
+      Patientlogin <span class="fas fa-chevron-right"></span>
+    </a>
+  </div>
+</section>
+
 <app-banner></app-banner>
 <app-footer></app-footer>
 <router-outlet></router-outlet>

@@ -20,10 +20,16 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  font-size: 15px;
 }
 
 button:hover {
   opacity: 0.8;
+  border:2px solid #244f3e;
+  background-color: white;
+  color: #244f3e;
+  font-size: 15px;
+  
 }
 
 /* Extra styles for the cancel button */
@@ -43,11 +49,11 @@ button:hover {
 img.avatar {
   width: 35%;
   border-radius: 50%;
-  margin-left: 20rem;
+  margin-left: 1rem;
 }
 
 .container {
-  padding: 16px;
+  padding: 5px;
 }
 
 span.psw {
@@ -62,8 +68,8 @@ span.psw {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 80%; /* Full width */
+  height: 80%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(30, 66, 39); /* Fallback color */
   background-color: rgb(30, 66, 39); /* Black w/ opacity */
@@ -73,9 +79,9 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */

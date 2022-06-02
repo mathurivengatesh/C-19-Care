@@ -24,9 +24,14 @@ app.post("/signup", (request, response) => {
 
     password: request.body.password,
     confirm_password: request.body.cpsw,
+    type:request.body.type
   };
 
-  dbconnection.insert(object);
+  dbconnection.insert(object).then(res=>{
+    response.send(res);
+  }).catch(rej=>{
+    response.send(rej);
+  });
   console.log("Data added");
 });
 
@@ -34,7 +39,7 @@ app.listen(port,(err)=>{
     if(err){
         console.log(err);
     }
-    console.log(`htpp://localhost:8000`);
+    console.log(`http://localhost:8000`);
 })
 app.get("/getsupplier", (request, response) => {
   console.log(request);

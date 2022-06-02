@@ -19,6 +19,8 @@ import { GuardiandetailComponent } from './guardiandetail/guardiandetail.compone
 import { MedicalreportComponent } from './medicalreport/medicalreport.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
 import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
+import { PatientpageComponent } from './patientpage/patientpage.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -39,7 +41,9 @@ import { InchargedetailComponent } from './inchargedetail/inchargedetail.compone
     GuardiandetailComponent,
     MedicalreportComponent,
     QuarantinedetailComponent,
-    InchargedetailComponent
+    InchargedetailComponent,
+    PatientpageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

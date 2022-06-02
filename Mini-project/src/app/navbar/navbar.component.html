@@ -33,7 +33,7 @@
     </ul>
   </div>
 </nav> -->
-<div class="page">
+<!-- <div class="page">
   <nav class="page__menu page__custom-settings menu">
     <div class="header-img">
       <img src="../../assets/images/design logo 2.png" />
@@ -81,6 +81,22 @@
       </li>
     </ul>
   </nav>
-</div>
+</div> -->
+<!-- 2nd one -->
+<header class="header">
+  <a routerLink="/home" routerLinkActive="active" class="logo">
+    <i class="fas fa-heartbeat"></i> medcare.
+  </a>
 
+  <nav class="navbar">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a href="#services">Services</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/contact" routerLinkActive="active">contact us</a>
+    <a routerLink="/help" routerLinkActive="active">Help</a>
+    <a routerLink="/signup" routerLinkActive="active">Signup</a>
+  </nav>
+
+  <div id="menu-btn" class="fas fa-bars"></div>
+</header>
 <router-outlet></router-outlet>

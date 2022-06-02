@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
       mobileno: new FormControl(''),
       password: new FormControl(''),
       cpsw: new FormControl(''),
+      type: new FormControl('user')
     });
   }
   onSubmit(form: FormGroup) {
@@ -29,11 +30,14 @@ export class SignupComponent implements OnInit {
     console.log('Mobileno', form.value.mobileno);
     console.log('Password', form.value.password);
     console.log('Cpsw', form.value.cpsw);
+    console.log('type', form.value.type);
   }
   adduser(Formvalue:NgForm){
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
       console.log(data);
+    },rej=>{
+      console.log("error",rej);
     })
   }
   call(){
