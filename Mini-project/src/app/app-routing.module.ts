@@ -5,12 +5,14 @@ import { AdminformComponent } from './adminform/adminform.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GuardiandetailComponent } from './guardiandetail/guardiandetail.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
 import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientloginComponent } from './patientlogin/patientlogin.component';
 import { PatientpageComponent } from './patientpage/patientpage.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
+import { ServiceComponent } from './service/service.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [ 
@@ -26,7 +28,9 @@ const routes: Routes = [
 {path:'help', component:HelpComponent},
 {path:'adminlogin', component:AdminloginComponent},
 {path:'patientlogin', component:PatientloginComponent},
-{path:'dashboard', component:DashboardComponent}
+{path:'dashboard', component:DashboardComponent},
+{path:'guardiandetail', component:GuardiandetailComponent},
+{path:'service', component:ServiceComponent}
 ];
 
 @NgModule({

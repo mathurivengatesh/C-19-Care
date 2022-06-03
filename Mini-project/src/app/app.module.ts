@@ -21,6 +21,7 @@ import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.c
 import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientpageComponent } from './patientpage/patientpage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ServiceComponent } from './service/service.component';
 
 
 
@@ -43,7 +44,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     QuarantinedetailComponent,
     InchargedetailComponent,
     PatientpageComponent,
-    DashboardComponent
+    DashboardComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

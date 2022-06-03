@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm,FormBuilder,Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quarantinedetail',
@@ -55,7 +56,7 @@ inchargeform:FormGroup;
     type:''
 
   }
-  constructor(private api:CouchdbService) {
+  constructor(private api:CouchdbService,private router:Router) {
    
    }
 
@@ -110,6 +111,8 @@ inchargeform:FormGroup;
     }
     addrecord(Formvalue:NgForm){
       console.log(Formvalue);
+      
+
     }  
   
       
@@ -219,7 +222,6 @@ inchargeform:FormGroup;
    
     storing(formdata){
       console.log(formdata);
-      // this.store.pushData(formdata);
       this.api.add("c_19_care",formdata.value).subscribe(res=>{
         console.log(res);
         alert("Your data was posted successfully!");

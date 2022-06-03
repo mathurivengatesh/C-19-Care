@@ -1,1 +1,38 @@
-<p>guardiandetail works!</p>
+<h1>Personal Information</h1>
+
+<table class="table" id="personalform">
+  <caption>
+    Patient personal data
+  </caption>
+  <thead>
+    <tr>
+      <th>fname</th>
+      <th>lname</th>
+      <th>patientid</th>
+      <th>dob</th>
+      <th>age</th>
+      <th>bloodgroup</th>
+      <th>gender</th>
+      <th>mobileno</th>
+      <th>address</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of personalData">
+      <td>{{ user.fname }}</td>
+      <td>{{ user.lname }}</td>
+      <td>{{ user.patientid }}</td>
+      <td>{{ user.dob }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.bloodgroup }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.mobileno }}</td>
+      <td>{{ user.address }}</td>
+      <td><button class="btn">Edit</button></td>
+      <td><button class="btn">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
