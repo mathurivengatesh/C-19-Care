@@ -1,7 +1,7 @@
 <form
   class="modal-content animate"
   [formGroup]="patientlogin"
-  (ngSubmit)="onSubmit(login)"
+  (ngSubmit)="onSubmit(login.value)"
 >
   <div class="imgcontainer">
     <span
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <button type="submit" routerLink="/patientpage" routerLinkActive="active">
+    <button type="submit" routerLink="/patientdetail" onclick="onclick()">
       Login
     </button>
     <label>

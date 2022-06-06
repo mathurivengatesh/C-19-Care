@@ -9,9 +9,16 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   myForm: FormGroup;
-  object:any=[]
+  object:any={
+    email: '',
+    mobileno: '',
+    password: '',
+    cpsw:'',
+    _id:''
+  
+  };
   alldata:any;
-  constructor(private api:ApiServiceService,router:Router) {
+  constructor(private api:ApiServiceService, private router:Router) {
     
    }
 
@@ -36,9 +43,11 @@ export class SignupComponent implements OnInit {
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
       console.log(data);
+      
     },rej=>{
       console.log("error",rej);
     })
+   
   }
   call(){
     alert("your Registration successful") ;

@@ -4,7 +4,6 @@ import { AboutComponent } from './about/about.component';
 import { AdminformComponent } from './adminform/adminform.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { ContactComponent } from './contact/contact.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuardiandetailComponent } from './guardiandetail/guardiandetail.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
@@ -14,6 +13,7 @@ import { PatientpageComponent } from './patientpage/patientpage.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
 import { ServiceComponent } from './service/service.component';
 import { SignupComponent } from './signup/signup.component';
+import { PatientdetailComponent } from './patientdetail/patientdetail.component';
 
 const routes: Routes = [ 
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -28,7 +28,7 @@ const routes: Routes = [
 {path:'help', component:HelpComponent},
 {path:'adminlogin', component:AdminloginComponent},
 {path:'patientlogin', component:PatientloginComponent},
-{path:'dashboard', component:DashboardComponent},
+{path:'patientdetail', component:PatientdetailComponent},
 {path:'guardiandetail', component:GuardiandetailComponent},
 {path:'service', component:ServiceComponent}
 ];

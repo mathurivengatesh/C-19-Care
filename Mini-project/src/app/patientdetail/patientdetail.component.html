@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="tab">
+    <ul>
+      <li
+        id="personalform"
+        [class.color]="id === 'personalform'"
+        (click)="tabchange('personalform')"
+      >
+        personal Detail
+      </li>
+      <li
+        id="guardianform"
+        [class.color]="id === 'guardianform'"
+        (click)="tabchange('guardianform')"
+      >
+        Guardian Detail
+      </li>
+
+      <li
+        id="quaratineform"
+        [class.color]="id === 'quaratineform'"
+        (click)="tabchange('quaratineform')"
+      >
+        Quaratine Detail
+      </li>
+      <li
+        id="inchargeform"
+        [class.color]="id === 'inchargeform'"
+        (click)="tabchange('inchargeform')"
+      >
+        Patient Incharge
+      </li>
+    </ul>
+    <div class="content">
+      <div class="content-value" *ngIf="id === 'personalform'">
+        <table class="table" id="personalform">
+          <caption>
+            Patient personal data
+          </caption>
+          <thead>
+            <tr>
+              <th>fname</th>
+              <th>lname</th>
+              <th>patientid</th>
+              <th>dob</th>
+              <th>age</th>
+              <th>bloodgroup</th>
+              <th>gender</th>
+              <th>mobileno</th>
+              <th>address</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of personalData">
+              <td>{{ user.fname }}</td>
+              <td>{{ user.lname }}</td>
+              <td>{{ user.patientid }}</td>
+              <td>{{ user.dob }}</td>
+              <td>{{ user.age }}</td>
+              <td>{{ user.bloodgroup }}</td>
+              <td>{{ user.gender }}</td>
+              <td>{{ user.mobileno }}</td>
+              <td>{{ user.address }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content-value" *ngIf="id === 'guardianform'">
+        <table class="table" id="guardianform">
+          <caption>
+            additional info data
+          </caption>
+          <thead>
+            <tr>
+              <th>status</th>
+
+              <th>guardian fname</th>
+              <th>guardian lname</th>
+              <th>gender</th>
+              <th>dob</th>
+              <th>age</th>
+              <th>bloodgroup</th>
+              <th>mobileno</th>
+              <th>address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of guardianData">
+              <td>{{ user.status }}</td>
+
+              <td>{{ user.gfname }}</td>
+              <td>{{ user.glname }}</td>
+              <td>{{ user.gage }}</td>
+              <td>{{ user.gdob }}</td>
+              <td>{{ user.ggender }}</td>
+              <td>{{ user.gbloodgroup }}</td>
+              <td>{{ user.gmobileno }}</td>
+              <td>{{ user.gaddress }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content-value" *ngIf="id === 'quarantineform'">
+        <table class="table" id="quarantineform">
+          <caption>
+            additional info data
+          </caption>
+          <thead>
+            <tr>
+              <th>type of Quarntine</th>
+              <th>No of days</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of guardianData">
+              <td>{{ user.qtype }}</td>
+              <td>{{ user.days }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-value" *ngIf="id === 'inchargeform'">
+        <table class="table" id="inchargeform">
+          <caption>
+            additional info data
+          </caption>
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+
+              <th>Nurse Name</th>
+              <th>Attendor Name</th>
+              <th>Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of guardianData">
+              <td>{{ user.docname }}</td>
+              <td>{{ user.nurname }}</td>
+              <td>{{ user.attenname }}</td>
+              <td>{{ user.driver }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

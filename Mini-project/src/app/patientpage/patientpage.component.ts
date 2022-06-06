@@ -20,7 +20,7 @@ display() {
 
  let data = {
   selector: {
-   type: "personalform"
+   type: "patient"
  },
  
    }

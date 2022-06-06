@@ -8,7 +8,6 @@ export class ApiServiceService {
 
   constructor(private http:HttpClient) { }
   add(formobject:any){
-    // console.log("abdc");
     return this.http.post("http://localhost:8000/signup",formobject)
 
   }

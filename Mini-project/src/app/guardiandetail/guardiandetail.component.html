@@ -1,38 +1,324 @@
-<h1>Personal Information</h1>
+<div class="container">
+  <div class="tab">
+    <ul>
+      <li
+        id="guardianform"
+        [class.color]="id === 'guardianform'"
+        (click)="tabchange('guardianform')"
+      >
+        Guardian Detail
+      </li>
+    </ul>
 
-<table class="table" id="personalform">
-  <caption>
-    Patient personal data
-  </caption>
-  <thead>
-    <tr>
-      <th>fname</th>
-      <th>lname</th>
-      <th>patientid</th>
-      <th>dob</th>
-      <th>age</th>
-      <th>bloodgroup</th>
-      <th>gender</th>
-      <th>mobileno</th>
-      <th>address</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
+    <div class="content">
+      <div class="content-value" *ngIf="id === 'guardianform'">
+        <div class="container-form">
+          <form
+            action=""
+            [formGroup]="guardianform"
+            (ngSubmit)="storing(this.guardianform.value)"
+          >
+            <div class="row">
+              <div class="col-25">
+                <label for="status">Relationship Of Guardian To Patient:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="status"
+                  name="status"
+                  formControlName="status"
+                  class="form-control"
+                  placeholder="enter the relationship"
+                />
+                <div
+                  *ngIf="!status?.valid && (status?.dirty || status?.touched)"
+                >
+                  <div [hidden]="!status.errors.required" class="text-danger">
+                    status is required
+                  </div>
+                  <div [hidden]="!status.errors.minlength" class="text-danger">
+                    Min Length is 10
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="gfname">First Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="gfname"
+                  name="gfname"
+                  formControlName="gfname"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+                <div
+                  *ngIf="!gfname?.valid && (gfname?.dirty || gfname?.touched)"
+                >
+                  <div [hidden]="!gfname.errors.required" class="text-danger">
+                    firstname is required
+                  </div>
+                  <div [hidden]="!gfname.errors.minlength" class="text-danger">
+                    Min Length is 10
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="glname">Last Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="glname"
+                  name="glname"
+                  formControlName="glname"
+                  class="from-control"
+                  placeholder="enter last name.."
+                />
+                <div
+                  *ngIf="!glname?.valid && (glname?.dirty || glname?.touched)"
+                >
+                  <div [hidden]="!glname.errors.required" class="text-danger">
+                    lastname is required
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  <tbody>
-    <tr *ngFor="let user of personalData">
-      <td>{{ user.fname }}</td>
-      <td>{{ user.lname }}</td>
-      <td>{{ user.patientid }}</td>
-      <td>{{ user.dob }}</td>
-      <td>{{ user.age }}</td>
-      <td>{{ user.bloodgroup }}</td>
-      <td>{{ user.gender }}</td>
-      <td>{{ user.mobileno }}</td>
-      <td>{{ user.address }}</td>
-      <td><button class="btn">Edit</button></td>
-      <td><button class="btn">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+            <div class="row">
+              <div class="col-25">
+                <label for="gdob">Date of Birth:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="date"
+                  id="gdob"
+                  name="gdob"
+                  formControlName="gdob"
+                  class="form-control"
+                  placeholder="enter DOB"
+                />
+                <div *ngIf="!gdob?.valid && (gdob?.dirty || gdob?.touched)">
+                  <div [hidden]="!gdob.errors.required" class="text-danger">
+                    DOB is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="gage">Age:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="number"
+                  id="gage"
+                  name="gage"
+                  formControlName="gage"
+                  class="form-control"
+                  placeholder="enter Age"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="gbloodgroup">Blood Group:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="gbloodgroup"
+                  name="gbloodgroup"
+                  formControlName="gbloodgroup"
+                  class="form-control"
+                  placeholder="enter bloodgroup"
+                />
+                <div
+                  *ngIf="
+                    !gbloodgroup?.valid &&
+                    (gbloodgroup?.dirty || gbloodgroup?.touched)
+                  "
+                >
+                  <div
+                    [hidden]="!gbloodgroup.errors.required"
+                    class="text-danger"
+                  >
+                    Bloodgroup is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="ggender">Gender</label>
+              </div>
+              <div class="col-75">
+                <select
+                  id="ggender"
+                  name="ggender"
+                  formControlName="ggender"
+                  class="form-control"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="gmobileno">Mobile No:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="gmobileno"
+                  name="gmobileno"
+                  formControlName="gmobileno"
+                  class="form-control"
+                  placeholder="enter mobileno"
+                />
+                <div
+                  *ngIf="
+                    !gmobileno?.valid &&
+                    (gmobileno?.dirty || gmobileno?.touched)
+                  "
+                >
+                  <div
+                    [hidden]="!gmobileno.errors.required"
+                    class="text-danger"
+                  >
+                    mobileno is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Address</label>
+              </div>
+              <div class="col-75">
+                <textarea
+                  id="subject"
+                  name="subject"
+                  formControlName="gaddress"
+                  class="form-control"
+                  placeholder="current location"
+                  style="height: 200px"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">type of quarantine:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="q-type"
+                  name="qtype"
+                  formControlName="qtype"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="lname">No Of days:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="days"
+                  name="days"
+                  formControlName="days"
+                  class="from-control"
+                  placeholder="enter last name.."
+                />
+                <div *ngIf="!lname?.valid && (lname?.dirty || lname?.touched)">
+                  <div [hidden]="!lname.errors.required" class="text-danger">
+                    This field is required
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="doc-name">Name Of the Doctor:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="doc-name"
+                  name="doc-name"
+                  formControlName="docname"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="nur-name">Name Of the Nurse:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="nur-name"
+                  name="nur-name"
+                  formControlName="nurname"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="nur-name">Name Of the Attendor:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="atten-name"
+                  name="atten-name"
+                  formControlName="attenname"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="nur-name">Ambulance Incharge:</label>
+              </div>
+              <div class="col-75">
+                <input
+                  type="text"
+                  id="driver"
+                  name="driver"
+                  formControlName="driver"
+                  class="form-control"
+                  placeholder="enter name.."
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <input type="submit" value="Submit" (click)="addrecord()" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

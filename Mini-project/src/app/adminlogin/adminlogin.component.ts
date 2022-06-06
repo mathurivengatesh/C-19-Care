@@ -21,7 +21,7 @@ export class AdminloginComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
-      // this.show=!this.show;
+      
       this.api.getsupplier().subscribe(data=>{
         console.log(data);
         console.log('Data was fetching');
@@ -36,11 +36,7 @@ export class AdminloginComponent implements OnInit {
            console.log(res);
            this.object.push(res);
            console.log('Fetched successfuly in add component');
-           // for (const iterator of this.object) {
-           //  if(iterator.supplier==formvalue.supplier){
-           //   console.log('hello',iterator.supplier);
-           //  }       
-           // }
+          
           })
          }
      }
@@ -48,13 +44,11 @@ export class AdminloginComponent implements OnInit {
      })
   }
   getsupplier(formvalue:any){
+  // TODO document why this method 'getsupplier' is empty
+
   
 }
-//   onSubmit(login: FormGroup) {
-//     console.log('Valid?', login.valid); // true or false
-//     console.log('Username', login.value.Username);
-//     console.log('psw', login.value.psw);
-// }
+
 adminFormData(formvalue: any) {
   console.log(formvalue);
   for (const i of this.object) {
@@ -62,6 +56,8 @@ adminFormData(formvalue: any) {
       i.email == formvalue.email &&
       i.password == formvalue.password
     ) {
+      let  id:any = i._id;
+    localStorage.setItem("userid",id);
       this.flag = 1;
     }
   }

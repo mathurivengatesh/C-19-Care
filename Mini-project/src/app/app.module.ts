@@ -20,8 +20,8 @@ import { MedicalreportComponent } from './medicalreport/medicalreport.component'
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
 import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientpageComponent } from './patientpage/patientpage.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceComponent } from './service/service.component';
+import { PatientdetailComponent } from './patientdetail/patientdetail.component';
 
 
 
@@ -44,8 +44,8 @@ import { ServiceComponent } from './service/service.component';
     QuarantinedetailComponent,
     InchargedetailComponent,
     PatientpageComponent,
-    DashboardComponent,
-    ServiceComponent
+    ServiceComponent,
+    PatientdetailComponent
   ],
   imports: [
     BrowserModule,

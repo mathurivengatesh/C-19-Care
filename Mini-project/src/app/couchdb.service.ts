@@ -21,7 +21,8 @@ export class CouchdbService {
     gender:'',
     mobileno:'',
     address:'',
-    type:''
+    type:'',
+
   }
 
   constructor(private http:HttpClient) { }

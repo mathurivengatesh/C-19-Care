@@ -1,13 +1,9 @@
-// const express = require("express");
 const connection = require("express");
 const bodyparser = require("body-parser");
 const app = connection();
 const port = 8000;
 const cors = require("cors");
 const dbconnection = require("./data");
-const { request } = require("express");
-const { response } = require("express");
-// const { response } = require("express");
 app.use(connection.static("public"));
 app.use(bodyparser.json());
 app.use(
@@ -28,6 +24,7 @@ app.post("/signup", (request, response) => {
   };
 
   dbconnection.insert(object).then(res=>{
+    console.log("Dharani",res);
     response.send(res);
   }).catch(rej=>{
     response.send(rej);
