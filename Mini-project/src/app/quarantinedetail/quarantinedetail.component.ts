@@ -102,8 +102,8 @@ myForm: FormGroup;
         let  id:any = this.id;
     localStorage.setItem("patientid",id);
     this.toastr.success("data posted successfully");
-      },rej=>{
-        this.toastr.error("data failed to post");
+      },err=>{
+        this.toastr.error("data failed to post",err);
       });
     }
     

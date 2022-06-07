@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MedicalreportComponent implements OnInit {
 guardian:any;
 guardianData:any;
-  constructor(private couch:CouchdbService, private router:Router) {   }
+  constructor(private couch:CouchdbService, private router:Router) { this.display() ; }
 
   ngOnInit(): void {
     // TODO document why this method 'ngOnInit' is empty

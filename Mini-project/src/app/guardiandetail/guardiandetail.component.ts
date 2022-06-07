@@ -124,8 +124,8 @@ ngOnInit(): void {
       this.api.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
         this.toastr.success("data posted successfully")
-      },rej=>{
-      this.toastr.error("failed to post data")
+      },err=>{
+      this.toastr.error("failed to post data",err)
       });
     }
    

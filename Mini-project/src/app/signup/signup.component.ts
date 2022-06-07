@@ -46,14 +46,12 @@ export class SignupComponent implements OnInit {
       console.log(data);
       this.toastr.success("registration success");
       
-    },rej=>{
-      this.toastr.error("registration cancelled");
+    },err=>{
+      this.toastr.error("registration cancelled",err);
     })
    
   }
-  call(){
-    alert("your Registration successful") ;
-  }
+  
   
   }
     
