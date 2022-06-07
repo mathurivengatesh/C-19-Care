@@ -49,4 +49,16 @@ export class CouchdbService {
   this.url= this.url+'c_19_care/'+id+'?rev='+rev;
   return this.http.delete(this.url,this.httpOptions)
   }
+  validate(){
+    const url =  this.url +'c_19_care/_find';
+    const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
+    const object = {
+      selector: {
+        type: "patient",
+      },
+    };
+    return this.http.post(url, object, {
+      headers: { Authorization: basicAuth },
+    });
+  }
 }

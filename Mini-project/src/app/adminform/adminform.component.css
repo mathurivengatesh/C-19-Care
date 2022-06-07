@@ -43,7 +43,7 @@ section::after {
 	align-items: center;
 	flex-wrap: wrap;
 	margin: 40px 0;
-  margin-top: 12rem;
+  margin-top: 5rem;
   margin-left: 12rem;
 }
 
@@ -132,11 +132,11 @@ section::after {
 	font-size: 20px;
 }
 .dashboard{
-	margin-left: 60rem;
-	margin-top: 1rem;
+	margin-left: 114rem;
+	margin-top: 10rem;
 	margin-bottom: -1rem;
 
 }
 .dashboard a{
-	padding: 1rem;
+	padding: 10px;
 }

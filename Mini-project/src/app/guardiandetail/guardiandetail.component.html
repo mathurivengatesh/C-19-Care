@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="user.length == 0">
   <div class="tab">
     <ul>
       <li
-        id="guardianform"
-        [class.color]="id === 'guardianform'"
+        id1="guardianform"
+        [class.color]="id1 === 'guardianform'"
         (click)="tabchange('guardianform')"
       >
         Guardian Detail
@@ -11,7 +11,7 @@
     </ul>
 
     <div class="content">
-      <div class="content-value" *ngIf="id === 'guardianform'">
+      <div class="content-value" *ngIf="id1 === 'guardianform'">
         <div class="container-form">
           <form
             action=""
@@ -322,3 +322,46 @@
     </div>
   </div>
 </div>
+<table *ngIf="user.length == 1">
+  <caption>
+    additional info data
+  </caption>
+  <thead>
+    <tr>
+      <th>status</th>
+      <th>guardian fname</th>
+      <th>guardian lname</th>
+      <th>gender</th>
+      <th>dob</th>
+      <th>age</th>
+      <th>bloodgroup</th>
+      <th>mobileno</th>
+      <th>address</th>
+      <th>type of Quarntine</th>
+      <th>No of days</th>
+      <th>Doctor Name</th>
+      <th>Nurse Name</th>
+      <th>Attendor Name</th>
+      <th>Driver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of guardianData">
+      <td>{{ user.status }}</td>
+      <td>{{ user.gfname }}</td>
+      <td>{{ user.glname }}</td>
+      <td>{{ user.gage }}</td>
+      <td>{{ user.gdob }}</td>
+      <td>{{ user.ggender }}</td>
+      <td>{{ user.gbloodgroup }}</td>
+      <td>{{ user.gmobileno }}</td>
+      <td>{{ user.gaddress }}</td>
+      <td>{{ user.qtype }}</td>
+      <td>{{ user.days }}</td>
+      <td>{{ user.docname }}</td>
+      <td>{{ user.nurname }}</td>
+      <td>{{ user.attenname }}</td>
+      <td>{{ user.driver }}</td>
+    </tr>
+  </tbody>
+</table>

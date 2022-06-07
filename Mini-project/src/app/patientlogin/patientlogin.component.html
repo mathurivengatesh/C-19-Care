@@ -1,8 +1,4 @@
-<form
-  class="modal-content animate"
-  [formGroup]="patientlogin"
-  (ngSubmit)="onSubmit(login.value)"
->
+<form class="modal-content animate" [formGroup]="patientlogin">
   <div class="imgcontainer">
     <span
       routerLink="/home"
@@ -25,8 +21,9 @@
       />
       <div
         *ngIf="
-          login.get('Patientid').invalid &&
-          (login.get('Patientid').dirty || login.get('Patientid').touched)
+          patientlogin.get('Patientid').invalid &&
+          (patientlogin.get('Patientid').dirty ||
+            patientlogin.get('Patientid').touched)
         "
         class="text-danger"
       >
@@ -34,17 +31,18 @@
       </div>
     </div>
     <div>
-      <label for="psw"><strong>Password</strong></label>
+      <label for="dob"><strong>mobileno:</strong></label>
       <input
-        type="password"
+        type="number"
         placeholder="Enter Password"
-        formControlName="psw"
+        formControlName="mobileno"
         required
       />
       <div
         *ngIf="
-          login.get('psw').invalid &&
-          (login.get('psw').dirty || login.get('psw').touched)
+          patientlogin.get('mobileno').invalid &&
+          (patientlogin.get('mobileno').dirty ||
+            patientlogin.get('mobileno').touched)
         "
         class="text-danger"
       >
@@ -52,7 +50,7 @@
       </div>
     </div>
 
-    <button type="submit" routerLink="/patientdetail" onclick="onclick()">
+    <button type="submit" (click)="adminFormData(this.patientlogin.value)">
       Login
     </button>
     <label>

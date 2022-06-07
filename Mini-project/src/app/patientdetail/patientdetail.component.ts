@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CouchdbService } from '../couchdb.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-patientdetail',
@@ -12,7 +13,7 @@ guardian:any;
 guardianData:any;
 personal:any;
 personalData:any;
-  constructor(private couch:CouchdbService,private router:Router) {this.display(); 
+  constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) {this.display(); 
     this.store();}
 
   ngOnInit(): void {
@@ -64,5 +65,10 @@ personalData:any;
   tabchange(ids:any){
     this.id=ids;
     console.log(this.id);
+  }
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/home'],{});
+    this.toastr.success("logged out");
   }
 }

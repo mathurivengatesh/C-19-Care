@@ -1,5 +1,5 @@
 .container{
-    margin-top: 12rem;
+    margin-top: 5rem;
     width: 80%;
     height: 70%;
 }
@@ -115,7 +115,11 @@ td{
   border: 1px solid black;
 
 }
-
+.logout{
+  width: 5%;
+  margin-top: 9rem;
+  margin-left: 120rem;
+}
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {

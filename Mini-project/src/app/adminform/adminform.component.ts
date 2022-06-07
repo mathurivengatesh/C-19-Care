@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adminform',
@@ -8,12 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class AdminformComponent implements OnInit {
  
 
-  constructor() { /* TODO document why this constructor is empty */  }
+  constructor(private router:Router, private toastr:ToastrService) { /* TODO document why this constructor is empty */  }
 
   ngOnInit(): void {
     // TODO document why this method 'ngOnInit' is empty
   
    
   }
+logout(){
+  localStorage.clear();
+  this.router.navigate(['/home'],{});
+  this.toastr.success("logged out");
 
+}
 }

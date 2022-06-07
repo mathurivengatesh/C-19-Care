@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,8 +11,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GuardiandetailComponent implements OnInit {
 title='tabchange';
+id:any
+type:any
 guardianform:FormGroup;
-patient_id = localStorage.getItem('patientid');
+guardian:any;
+guardianData:any;
  
   object:any={
     status:'',
@@ -30,12 +33,12 @@ patient_id = localStorage.getItem('patientid');
     nurname:'',
     attenname:'',
     driver:'',
-    type:'',
+    
 
   }
   
-  constructor(private api:CouchdbService,private router:Router,private toastr:ToastrService) {
-   
+  constructor(private api:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute) {
+   this.display();
    }
 ngOnInit(): void {
      
@@ -55,10 +58,19 @@ ngOnInit(): void {
         nurname:new FormControl('',[Validators.required]),
         attenname:new FormControl('',[Validators.required]),
         driver:new FormControl('',[Validators.required]),
-        type:new FormControl('info')
       })
+      this.activatedroute.queryParams.subscribe(params =>{
+      console.log(params);
+      this.id=params.id;
+      this.type=params.type;
+      console.log(this.id);
+      console.log(this.type);
+    }
+     );
+  
      
     }
+   
     addrecord(Formvalue:NgForm){
       console.log(Formvalue);
       
@@ -119,7 +131,8 @@ ngOnInit(): void {
    
     storing(formdata){
       console.log(formdata);
-      formdata.patient_id = this.patient_id; 
+      formdata["patientid"]=this.id;
+      formdata["type"]=this.type;
       console.log("formdata",formdata);
       this.api.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
@@ -129,8 +142,27 @@ ngOnInit(): void {
       });
     }
    
+    display() {
+
+      let data = {
+       selector: {
+        type: "info"
+      },
   
-id:any = "guardianform";
+    }
+    this.api.get(data).subscribe(res => {
+      this.guardian=res;
+      console.log(res);
+      this.guardian = this.guardian.docs;
+       this.guardianData = this.guardian
+       console.log(this.guardianData[0]);
+      for (const array in this.guardianData) {
+       console.log(this.guardianData[array])
+      }
+      
+     });
+    }
+id1:any = "guardianform";
 tabchange(ids:any){
   this.id=ids;
   console.log(this.id);

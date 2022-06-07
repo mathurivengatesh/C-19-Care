@@ -13,7 +13,7 @@ import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminformComponent } from './adminform/adminform.component';
 import { GuardiandetailComponent } from './guardiandetail/guardiandetail.component';
 import { MedicalreportComponent } from './medicalreport/medicalreport.component';
@@ -25,7 +25,7 @@ import { PatientdetailComponent } from './patientdetail/patientdetail.component'
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from  '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -55,6 +55,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     ReactiveFormsModule,HttpClientModule,
     CommonModule,
+    Ng2SearchPipeModule,
+    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CouchdbService } from '../couchdb.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-patientpage',
@@ -10,8 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PatientpageComponent implements OnInit {
   personal:any;
-  personalData:any;
-  constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService) {this.display() }
+  personalData:any;search:any;
+ 
+  constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService,private activatedroute:ActivatedRoute) {this.display() }
 
   ngOnInit(): void {
   // TODO document why this method 'ngOnInit' is empty
@@ -50,5 +52,16 @@ display() {
  });
 }
 
+addAdditionalInfo(id,type)
+{
+ 
+  this.router.navigate(
+    ['/guardiandetail'],
+    { queryParams: { id: id, 'type': type } }
+  );
+  console.log(id,type);
 }
+ 
+}
+
   

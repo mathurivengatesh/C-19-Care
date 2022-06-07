@@ -99,8 +99,7 @@ myForm: FormGroup;
       console.log("formdata",formdata);
       this.api.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
-        let  id:any = this.id;
-    localStorage.setItem("patientid",id);
+        
     this.toastr.success("data posted successfully");
       },err=>{
         this.toastr.error("data failed to post",err);
