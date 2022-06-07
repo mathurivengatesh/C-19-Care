@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adminlogin',
@@ -14,12 +15,12 @@ export class AdminloginComponent implements OnInit {
   object:any=[];
   alldata:any;
   constructor( private api: ApiServiceService,
-    private router: Router) { }
+    private router: Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.login = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      password: new FormControl('',[Validators.required,Validators.minLength(8)]),
     });
       
       this.api.getsupplier().subscribe(data=>{
@@ -43,11 +44,7 @@ export class AdminloginComponent implements OnInit {
      
      })
   }
-  getsupplier(formvalue:any){
-  // TODO document why this method 'getsupplier' is empty
-
-  
-}
+ 
 
 adminFormData(formvalue: any) {
   console.log(formvalue);
@@ -62,9 +59,10 @@ adminFormData(formvalue: any) {
     }
   }
   if (this.flag == 1) {
+    this.toastr.success("access granted")
     this.router.navigate(['/adminform']);
   } else {
-    alert('Invalid user');
+    this.toastr.error("Invalid user")
     location.reload();
   }
 }

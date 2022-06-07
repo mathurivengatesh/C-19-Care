@@ -22,6 +22,9 @@ import { InchargedetailComponent } from './inchargedetail/inchargedetail.compone
 import { PatientpageComponent } from './patientpage/patientpage.component';
 import { ServiceComponent } from './service/service.component';
 import { PatientdetailComponent } from './patientdetail/patientdetail.component';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from  '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -50,7 +53,11 @@ import { PatientdetailComponent } from './patientdetail/patientdetail.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,HttpClientModule
+    ReactiveFormsModule,HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm,FormBuilder,Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-guardiandetail',
@@ -33,7 +34,7 @@ patient_id = localStorage.getItem('patientid');
 
   }
   
-  constructor(private api:CouchdbService,private router:Router) {
+  constructor(private api:CouchdbService,private router:Router,private toastr:ToastrService) {
    
    }
 ngOnInit(): void {
@@ -122,9 +123,9 @@ ngOnInit(): void {
       console.log("formdata",formdata);
       this.api.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
-        alert("Your data was posted successfully!");
+        this.toastr.success("data posted successfully")
       },rej=>{
-        alert("Can not post data"+rej);
+      this.toastr.error("failed to post data")
       });
     }
    

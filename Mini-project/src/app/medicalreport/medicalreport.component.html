@@ -1,1 +1,49 @@
-<p>medicalreport works!</p>
+<h1>Personal Information</h1>
+
+<table class="table" id="gurdianform">
+  <caption>
+    Additional info
+  </caption>
+  <thead>
+    <tr>
+      <th>status</th>
+
+      <th>guardian fname</th>
+      <th>guardian lname</th>
+      <th>gender</th>
+      <th>dob</th>
+      <th>age</th>
+      <th>bloodgroup</th>
+      <th>mobileno</th>
+      <th>address</th>
+      <th>type of Quarntine</th>
+      <th>No of days</th>
+      <th>Doctor Name</th>
+
+      <th>Nurse Name</th>
+      <th>Attendor Name</th>
+      <th>Driver</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of guardianData">
+      <td>{{ user.status }}</td>
+
+      <td>{{ user.gfname }}</td>
+      <td>{{ user.glname }}</td>
+      <td>{{ user.gdob }}</td>
+      <td>{{ user.gage }}</td>
+      <td>{{ user.gbloodgroup }}</td>
+      <td>{{ user.ggender }}</td>
+      <td>{{ user.gmobileno }}</td>
+      <td>{{ user.qtype }}</td>
+      <td>{{ user.days }}</td>
+      <td>{{ user.docname }}</td>
+      <td>{{ user.nurname }}</td>
+      <td>{{ user.attenname }}</td>
+      <td>{{ user.driver }}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

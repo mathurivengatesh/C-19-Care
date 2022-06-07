@@ -33,14 +33,20 @@ export class CouchdbService {
     })
   };
   add(db: string, doc: object): Observable<{}> {
-    // const url2 = `${this.url}${db}`;
+    
     const url=this.url+db;
     return this.http.post(url, doc, this.httpOptions);
   }
   get(data:any): Observable<{}> {
-    // const url = this.url + db + '/_all_docs?include_docs=true';
+   
     const url = this.url +'c_19_care/_find';
     return this.http.post( url,data, this.httpOptions)
 
+  }
+  Delete(id: any,rev:any): Observable<{}>  {
+    console.log(id);
+    console.log(rev);
+  this.url= this.url+'c_19_care/'+id+'?rev='+rev;
+  return this.http.delete(this.url,this.httpOptions)
   }
 }

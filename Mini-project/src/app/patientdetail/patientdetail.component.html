@@ -18,7 +18,7 @@
 
       <li
         id="quaratineform"
-        [class.color]="id === 'quaratineform'"
+        [class.color]="id === 'quarantineform'"
         (click)="tabchange('quaratineform')"
       >
         Quaratine Detail
@@ -110,11 +110,17 @@
             <tr>
               <th>type of Quarntine</th>
               <th>No of days</th>
+              <th>No of days</th>
+              <th>No of days</th>
+              <th>No of days</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of guardianData">
               <td>{{ user.qtype }}</td>
+              <td>{{ user.days }}</td>
+              <td>{{ user.days }}</td>
+              <td>{{ user.days }}</td>
               <td>{{ user.days }}</td>
             </tr>
           </tbody>

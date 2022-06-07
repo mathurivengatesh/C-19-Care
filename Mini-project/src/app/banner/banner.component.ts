@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
 
-  constructor() { console.log("demo");}
+  constructor() { /* TODO document why this constructor is empty */  }
 
   ngOnInit(): void {
-    console.log("demo"); }
+       // TODO document why this method 'ngOnInit' is empty
+     
+     }
 
 }

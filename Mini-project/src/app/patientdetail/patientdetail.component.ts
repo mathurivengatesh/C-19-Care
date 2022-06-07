@@ -12,10 +12,12 @@ guardian:any;
 guardianData:any;
 personal:any;
 personalData:any;
-  constructor(private couch:CouchdbService,private router:Router) {this.display() ,this.store()}
+  constructor(private couch:CouchdbService,private router:Router) {this.display(), 
+    this.store()}
 
   ngOnInit(): void {
     // TODO document why this method 'ngOnInit' is empty
+  
   
   }
   store(){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CouchdbService } from '../couchdb.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-patientpage',
@@ -10,11 +11,21 @@ import { CouchdbService } from '../couchdb.service';
 export class PatientpageComponent implements OnInit {
   personal:any;
   personalData:any;
-  constructor(private couch:CouchdbService,private router:Router) {this.display() }
+  constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService) {this.display() }
 
   ngOnInit(): void {
+  // TODO document why this method 'ngOnInit' is empty
+
+   
 }
- 
+delete(id:any,rev:any){
+  this.couch.Delete(id,rev).subscribe(res=>{
+    console.log(res);
+    this.toastr.success("data deleted successfully");
+    window. location. reload();
+
+  })
+}
 
 display() {
 

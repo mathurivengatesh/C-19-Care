@@ -31,8 +31,16 @@
       <td>{{ user.gender }}</td>
       <td>{{ user.mobileno }}</td>
       <td>{{ user.address }}</td>
-      <td><button class="btn">Edit</button></td>
-      <td><button class="btn">Delete</button></td>
+      <td>
+        <a class="btn" routerLink="/medicalreports" routerLinkActive="active">
+          Additional info
+        </a>
+      </td>
+      <td>
+        <button class="btn" (click)="delete(user._id, user._rev)">
+          Delete
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -14,6 +14,7 @@ import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.c
 import { ServiceComponent } from './service/service.component';
 import { SignupComponent } from './signup/signup.component';
 import { PatientdetailComponent } from './patientdetail/patientdetail.component';
+import { MedicalreportComponent } from './medicalreport/medicalreport.component';
 
 const routes: Routes = [ 
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -30,7 +31,8 @@ const routes: Routes = [
 {path:'patientlogin', component:PatientloginComponent},
 {path:'patientdetail', component:PatientdetailComponent},
 {path:'guardiandetail', component:GuardiandetailComponent},
-{path:'service', component:ServiceComponent}
+{path:'service', component:ServiceComponent},
+{path:'medicalreport', component:MedicalreportComponent}
 ];
 
 @NgModule({

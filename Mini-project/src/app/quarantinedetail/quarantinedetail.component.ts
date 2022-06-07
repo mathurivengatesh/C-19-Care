@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm,Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-quarantinedetail',
@@ -27,7 +28,7 @@ myForm: FormGroup;
     
   }
  
-  constructor(private api:CouchdbService,private router:Router) {
+  constructor(private api:CouchdbService,private router:Router, private toastr:ToastrService) {
    
    }
 
@@ -100,10 +101,9 @@ myForm: FormGroup;
         console.log(res);
         let  id:any = this.id;
     localStorage.setItem("patientid",id);
-        alert("Your data was posted successfully!");
-      
+    this.toastr.success("data posted successfully");
       },rej=>{
-        alert("Can not post data"+rej);
+        this.toastr.error("data failed to post");
       });
     }
     

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CouchdbService } from '../couchdb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-medicalreport',
@@ -6,12 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./medicalreport.component.css']
 })
 export class MedicalreportComponent implements OnInit {
-
-  constructor() { /* TODO document why this constructor is empty */  }
+guardian:any;
+guardianData:any;
+  constructor(private couch:CouchdbService, private router:Router) {   }
 
   ngOnInit(): void {
     // TODO document why this method 'ngOnInit' is empty
   
   }
+  display() {
 
+    let data = {
+     selector: {
+      type: "info",
+    
+    },
+
+  }
+  this.couch.get(data).subscribe(res => {
+    this.guardian=res;
+    console.log(res);
+    this.guardian = this.guardian.docs;
+     this.guardianData = this.guardian
+     console.log(this.guardianData[0]);
+    for (const array in this.guardianData) {
+     console.log(this.guardianData[array])
+    }
+    
+   });
+  }
 }

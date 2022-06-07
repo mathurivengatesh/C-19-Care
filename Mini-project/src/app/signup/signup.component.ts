@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm,Validators } from '@angular/forms';
 import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,16 +19,16 @@ export class SignupComponent implements OnInit {
   
   };
   alldata:any;
-  constructor(private api:ApiServiceService, private router:Router) {
+  constructor(private api:ApiServiceService, private router:Router, private toastr:ToastrService) {
     
    }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      email: new FormControl(''),
-      mobileno: new FormControl(''),
-      password: new FormControl(''),
-      cpsw: new FormControl(''),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      mobileno: new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required,Validators.minLength(8)]),
+      cpsw: new FormControl('',[Validators.required]),
       type: new FormControl('user')
     });
   }
@@ -43,9 +44,10 @@ export class SignupComponent implements OnInit {
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
       console.log(data);
+      this.toastr.success("registration success");
       
     },rej=>{
-      console.log("error",rej);
+      this.toastr.error("registration cancelled");
     })
    
   }
