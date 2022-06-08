@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

@@ -10,12 +10,10 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminformComponent implements OnInit {
  
 
-  constructor(private router:Router, private toastr:ToastrService) { /* TODO document why this constructor is empty */  }
+  constructor(private router:Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    // TODO document why this method 'ngOnInit' is empty
-  
-   
+    console.log("adminform")
   }
 logout(){
   localStorage.clear();

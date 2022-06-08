@@ -17,7 +17,7 @@ personalData:any;
     this.store();}
 
   ngOnInit(): void {
-    // TODO document why this method 'ngOnInit' is empty
+    console.log("patientdetail")
   
   
   }

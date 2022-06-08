@@ -22,13 +22,14 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    // print: function() {}
   },
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });
-    jasmine.getEnv().addReporter(new SpecReporter({
+    // @ts-ignore
+    jasmine.getEnv().addReporter(new CustomReporter({
       spec: {
         displayStacktrace: StacktraceOption.PRETTY
       }

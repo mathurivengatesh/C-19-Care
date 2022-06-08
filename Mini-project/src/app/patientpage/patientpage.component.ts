@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { CouchdbService } from '../couchdb.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-patientpage',
@@ -16,7 +15,7 @@ export class PatientpageComponent implements OnInit {
   constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService,private activatedroute:ActivatedRoute) {this.display() }
 
   ngOnInit(): void {
-  // TODO document why this method 'ngOnInit' is empty
+  console.log("patientpage")
 
    
 }

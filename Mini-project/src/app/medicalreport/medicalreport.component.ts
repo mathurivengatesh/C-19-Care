@@ -13,8 +13,7 @@ guardianData:any;
   constructor(private couch:CouchdbService, private router:Router) { this.display() ; }
 
   ngOnInit(): void {
-    // TODO document why this method 'ngOnInit' is empty
-  
+console.log("medical")  
   }
   display() {
 
