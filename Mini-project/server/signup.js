@@ -20,7 +20,7 @@ app.use(
 
 app.post("/signup", (request, response) => {
   console.log(request);
-  var object = {
+  const object = {
     email: request.body.email,
     mobileno: request.body.mobileno,
 
