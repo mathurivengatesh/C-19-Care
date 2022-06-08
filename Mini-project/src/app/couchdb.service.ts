@@ -54,9 +54,37 @@ export class CouchdbService {
     const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
     const object = {
       selector: {
-        type: "patient",
+        type: 'patient',
       },
     };
+    return this.http.post(url, object, {
+      headers: { Authorization: basicAuth },
+    });
+  }
+
+  validate2(patient:any){
+    const url =  this.url +'c_19_care/_find';
+    const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
+    const object = {
+      selector: {
+        type: patient.type,
+        patientid: patient.patientid
+      },
+    };
+    return this.http.post(url, object, {
+      headers: { Authorization: basicAuth },
+    });
+  }
+    validate3(user:any){
+      const url =  this.url +'c_19_care/_find';
+      const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
+      const object = {
+        selector: {
+          type: user.type,
+          email: user.email
+        },
+      };
+    
     return this.http.post(url, object, {
       headers: { Authorization: basicAuth },
     });

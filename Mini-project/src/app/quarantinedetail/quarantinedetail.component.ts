@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm,Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiServiceService } from '../api-service.service';
 
 @Component({
   selector: 'app-quarantinedetail',
@@ -12,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class QuarantinedetailComponent implements OnInit {
 title='tabchange';
 myForm: FormGroup;
+submit=false
+alldata:any
  user_id = localStorage.getItem('userid');
  
   object:any={
@@ -28,9 +31,11 @@ myForm: FormGroup;
     
   }
  
-  constructor(private api:CouchdbService,private router:Router, private toastr:ToastrService) {
+  constructor(private couchdb:CouchdbService,private router:Router, private toastr:ToastrService,private api:ApiServiceService) {
    
    }
+
+
 
 
    
@@ -49,13 +54,9 @@ myForm: FormGroup;
           address:new FormControl('',[Validators.required]),
           type:new FormControl('patient')
       })
-      
+    
     }
-    addrecord(Formvalue:NgForm){
-      console.log(Formvalue);
-      
-
-    }  
+     
   
       
    
@@ -91,13 +92,33 @@ myForm: FormGroup;
       return this.myForm.get("address");
     } 
    
+    checkForValidity(){
+      const idValue = this.myForm.value['patientid']
+      const patient = {
+        'patientid':idValue,
+        'type':'patient'
+      } 
+      this.couchdb.validate2(patient).subscribe((response:any)=>{
+        console.log(response)
+        if(response.docs.length >=1){
+        this.toastr.error("Id already exist");
+        this.submit =false
+        }
+        else{
+          this.submit =true
+        }
+      },err=>{
+        console.error(err)
+      })
+    }
   
+
   
     storing(formdata){
       console.log(formdata);
       formdata.user_id = this.user_id;
       console.log("formdata",formdata);
-      this.api.add("c_19_care",formdata).subscribe(res=>{
+      this.couchdb.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
         
     this.toastr.success("data posted successfully");
@@ -105,11 +126,12 @@ myForm: FormGroup;
         this.toastr.error("data failed to post",err);
       });
     }
-    
   
+   
 id:any = "personalform";
 tabchange(ids:any){
   this.id=ids;
   console.log(this.id);
 }
+
 }

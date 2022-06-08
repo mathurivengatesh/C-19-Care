@@ -76,6 +76,7 @@
                   formControlName="patientid"
                   class="form-control"
                   placeholder="enter patientid"
+                  (change)="checkForValidity()"
                 />
                 <div
                   *ngIf="
@@ -189,7 +190,7 @@
               </div>
             </div>
             <div class="row">
-              <input type="submit" value="Submit" (click)="addrecord()" />
+              <input type="submit" value="Submit" [disabled]="!submit" />
             </div>
           </form>
         </div>

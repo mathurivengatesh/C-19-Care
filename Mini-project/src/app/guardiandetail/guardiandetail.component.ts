@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CouchdbService } from '../couchdb.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiServiceService } from '../api-service.service';
 
 @Component({
   selector: 'app-guardiandetail',
@@ -13,6 +14,8 @@ export class GuardiandetailComponent implements OnInit {
 title='tabchange';
 id:any
 type:any
+alldata:any
+data:any
 guardianform:FormGroup;
 guardian:any;
 guardianData:any;
@@ -37,7 +40,7 @@ guardianData:any;
 
   }
   
-  constructor(private api:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute) {
+  constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
    this.display();
    }
 ngOnInit(): void {
@@ -71,11 +74,7 @@ ngOnInit(): void {
      
     }
    
-    addrecord(Formvalue:NgForm){
-      console.log(Formvalue);
-      
-
-    }  
+   
   
       
    
@@ -134,7 +133,7 @@ ngOnInit(): void {
       formdata["patientid"]=this.id;
       formdata["type"]=this.type;
       console.log("formdata",formdata);
-      this.api.add("c_19_care",formdata).subscribe(res=>{
+      this.couchdb.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
         this.toastr.success("data posted successfully")
       },err=>{
@@ -150,7 +149,7 @@ ngOnInit(): void {
       },
   
     }
-    this.api.get(data).subscribe(res => {
+    this.couchdb.get(data).subscribe(res => {
       this.guardian=res;
       console.log(res);
       this.guardian = this.guardian.docs;
@@ -161,10 +160,14 @@ ngOnInit(): void {
       }
       
      });
-    }
+    
+
+   }
+   
 id1:any = "guardianform";
 tabchange(ids:any){
   this.id=ids;
   console.log(this.id);
 }
+
 }

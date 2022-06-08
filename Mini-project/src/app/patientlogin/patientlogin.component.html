@@ -16,14 +16,14 @@
       <input
         type="text"
         placeholder="Enter your Id"
-        formControlName="Patientid"
+        formControlName="patientid"
         required
       />
       <div
         *ngIf="
-          patientlogin.get('Patientid').invalid &&
-          (patientlogin.get('Patientid').dirty ||
-            patientlogin.get('Patientid').touched)
+          patientlogin.get('patientid').invalid &&
+          (patientlogin.get('patientid').dirty ||
+            patientlogin.get('patientid').touched)
         "
         class="text-danger"
       >

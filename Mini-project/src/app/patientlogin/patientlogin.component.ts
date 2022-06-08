@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiServiceService } from '../api-service.service';
 import { CouchdbService } from '../couchdb.service';
 
 @Component({
@@ -16,29 +17,29 @@ export class PatientloginComponent implements OnInit {
   alldata:any;
  
 
-  constructor(private router:Router,private api:CouchdbService, private toastr:ToastrService) { }
+  constructor(private router:Router,private api:ApiServiceService, private couchdb:CouchdbService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.patientlogin = new FormGroup({
-      Patientid: new FormControl('',[Validators.required]),
+      patientid: new FormControl('',[Validators.required]),
       mobileno: new FormControl('',[Validators.required]),
     });
-    this.api.validate().subscribe(data=>{
+    this.couchdb.validate().subscribe(data=>{
       console.log(data);
       console.log('Data was fetching');
       this.alldata=data;
-      this.alldata=this.alldata.rows;
+      this.alldata=this.alldata.docs;
       console.log(this.alldata);
       for(const i in this.alldata){
        if(Object.prototype.hasOwnProperty.call(this.alldata,i)){
         const elt = this.alldata[i];
-        console.log(elt.id);
-        // this.api.getsupplierId(elt.id).subscribe(res=>{
-        //  console.log(res);
-        //  this.object.push(res);
-        //  console.log('Fetched successfuly in add component');
+        console.log(elt._id);
+        this.api.getsupplierId(elt._id).subscribe(res=>{
+        console.log(res);
+        this.object.push(res);
+        console.log('Fetched successfuly in add component');
         
-        // })
+        })
        }
    }
    
@@ -50,7 +51,7 @@ adminFormData(formvalue: any) {
 console.log(formvalue);
 for (const i of this.object) {
   if (
-    i.patientid == formvalue.Patientid &&
+    i.patientid == formvalue.patientid &&
     i.mobileno == formvalue.mobileno
   ) {
     let  id:any = i._id;

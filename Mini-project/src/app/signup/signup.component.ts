@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm,Validators } from '@angular/forms';
 import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CouchdbService } from '../couchdb.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,7 +20,8 @@ export class SignupComponent implements OnInit {
   
   };
   alldata:any;
-  constructor(private api:ApiServiceService, private router:Router, private toastr:ToastrService) {
+  submit=false
+  constructor(private api:ApiServiceService, private router:Router, private toastr:ToastrService,private couchdb:CouchdbService) {
     
    }
 
@@ -31,6 +33,26 @@ export class SignupComponent implements OnInit {
       cpsw: new FormControl('',[Validators.required]),
       type: new FormControl('user')
     });
+  }
+  
+  checkForValidity(){
+    const emailValue = this.myForm.value['email']
+    const email = {
+      'email':emailValue,
+      'type':'user'
+    } 
+    this.couchdb.validate3(email).subscribe((response:any)=>{
+      console.log(response)
+      if(response.docs.length >=1){
+      this.toastr.error("email already exist");
+      this.submit =false
+      }
+      else{
+        this.submit =true
+      }
+    },err=>{
+      console.error(err)
+    })
   }
   onSubmit(form: FormGroup) {
     console.log('Valid?', form.valid); // true or false
