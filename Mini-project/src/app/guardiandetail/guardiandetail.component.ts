@@ -21,7 +21,7 @@ guardian:any;
 guardianData:any;
  
   object:any={
-    status:'',
+    status:'adsdsa',
     gfname:'',
     glname:'',
     gdob:'',
@@ -29,9 +29,9 @@ guardianData:any;
     gbloodgroup:'',
     ggender:'',
     gmobileno:'',
-    gaddress:'',
+    gaddress:'4345',
     qtype:'',
-    days:'',
+    days:'4534',
     docname:'',
     nurname:'',
     attenname:'',
@@ -41,6 +41,15 @@ guardianData:any;
   }
   
   constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
+    this.activatedroute.queryParams.subscribe(params =>{
+      console.log(params);
+      this.id=params.id;
+      this.type=params.type;
+      console.log(this.id);
+      console.log(this.type);
+      
+    }
+     );
    this.display();
    }
 ngOnInit(): void {
@@ -62,14 +71,8 @@ ngOnInit(): void {
         attenname:new FormControl('',[Validators.required]),
         driver:new FormControl('',[Validators.required]),
       })
-      this.activatedroute.queryParams.subscribe(params =>{
-      console.log(params);
-      this.id=params.id;
-      this.type=params.type;
-      console.log(this.id);
-      console.log(this.type);
-    }
-     );
+      
+     
   
      
     }
@@ -145,10 +148,13 @@ ngOnInit(): void {
 
       let data = {
        selector: {
-        type: "info"
+        patientid:this.id,
+        type:this.type
+
       },
   
     }
+    console.log(this.data)
     this.couchdb.get(data).subscribe(res => {
       this.guardian=res;
       console.log(res);

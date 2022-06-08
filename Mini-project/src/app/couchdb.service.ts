@@ -89,4 +89,8 @@ export class CouchdbService {
       headers: { Authorization: basicAuth },
     });
   }
+  getpatient(data:any){
+    const url="https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/c_19_care/_design/patientpage/_view/detail"
+    return this.http.post(url,data,this.httpOptions)
+  }
 }
