@@ -126,7 +126,9 @@ alldata:any
         this.toastr.error("data failed to post",err);
       });
     }
-  
+    backClick(){
+      this.router.navigate(['/adminform']);
+    }
    
 id:any = "personalform";
 tabchange(ids:any){

@@ -16,7 +16,13 @@ export class HttpCallInterceptor implements HttpInterceptor {
                 console.log(evt)
             }, err => {
                 console.log(err)
-                this.toastr.error(err.error.message.reason);
+                // this.toastr.error(err.error.message.reason);
+                if(err.error["message"]){
+                    this.toastr.error(err.error.message.reason);
+                }
+                else {
+                    this.toastr.error(err.error.reason); 
+                }
             })
         )
     }

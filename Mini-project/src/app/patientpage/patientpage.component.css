@@ -28,7 +28,7 @@
     height: 5%;
   }
   .search input{
-   margin-top: 8rem;
+    margin-top: -4rem;
    margin-left: 100rem;
    width: 20vw;
    height: 8vh;
@@ -36,8 +36,21 @@
   }
   
    .search img{
+    margin-top: -4rem;
    width:40px;
-   margin-top: 7rem;
    margin-left: -5rem;
 
+  }
+  .record{
+    margin-left: 48rem;
+    font-size: 15px;
+  }
+  .back-button{
+    margin-top: 12rem;
+    width: 40px;
+    margin-left: 4rem;
+    
+  }
+  h1{
+    margin-left: 50rem;
   }

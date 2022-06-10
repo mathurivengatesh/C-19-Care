@@ -17,20 +17,23 @@ app.use(
 );
 
 app.post("/signup", (request, response) => {
-  console.log(request);
+  console.log("signup");
+  console.log(request.body);
   const object = {
     email: request.body.email,
     mobileno: request.body.mobileno,
-
     password: request.body.password,
     confirm_password: request.body.cpsw,
     type:request.body.type
   };
 
   dbconnection.insert(object).then(res=>{
-    console.log("Dharani",res);
+    console.log("response");
+    console.log(res);
     response.send(res);
   }).catch(rej=>{
+    console.log("rejection");
+
     response.send(rej);
   });
   console.log("Data added");

@@ -20,25 +20,9 @@ guardianform:FormGroup;
 guardian:any;
 guardianData:any;
  
-  object:any={
-    status:'adsdsa',
-    gfname:'',
-    glname:'',
-    gdob:'',
-    gage:'',
-    gbloodgroup:'',
-    ggender:'',
-    gmobileno:'',
-    gaddress:'4345',
-    qtype:'',
-    days:'4534',
-    docname:'',
-    nurname:'',
-    attenname:'',
-    driver:'',
-    
-
-  }
+  object:any=[]
+   
+  
   
   constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
@@ -154,22 +138,44 @@ ngOnInit(): void {
       },
   
     }
-    console.log(this.data)
-    this.couchdb.get(data).subscribe(res => {
+    console.log(data)
+    this.couchdb.validate4(data).subscribe(res => {
       this.guardian=res;
       console.log(res);
       this.guardian = this.guardian.docs;
-       this.guardianData = this.guardian
-       console.log(this.guardianData[0]);
-      for (const array in this.guardianData) {
-       console.log(this.guardianData[array])
+       //this.guardianData = this.guardian
+      // 
+      
+      if(this.guardian.length>0){
+
+        this.setFormValue();
+
       }
       
      });
     
 
    }
-   
+   setFormValue(){
+     console.log(this.guardian[0].status)
+     this.status.setValue(this.guardian[0].status);
+     this.gfname.setValue(this.guardian[0].gfname);
+     this.glname.setValue(this.guardian[0].glname);
+     this.gdob.setValue(this.guardian[0].gdob);
+     this.gage.setValue(this.guardian[0].gbloodgroup);
+     this.ggender.setValue(this.guardian[0].gender);
+     this.gmobileno.setValue(this.guardian[0].ggender);
+     this.gaddress.setValue(this.guardian[0].gaddress);
+     this.qtype.setValue(this.guardian[0].qtype);
+     this.days.setValue(this.guardian[0].days);
+     this.docname.setValue(this.guardian[0].docname);
+     this.nurname.setValue(this.guardian[0].nurname);
+     this.attenname.setValue(this.guardian[0].attenname);
+     this.driver.setValue(this.guardian[0].driver);
+   }
+   backClick(){
+    this.router.navigate(['/patientpage']);
+  } 
 id1:any = "guardianform";
 tabchange(ids:any){
   this.id=ids;

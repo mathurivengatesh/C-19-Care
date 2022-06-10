@@ -22,14 +22,17 @@ export class PatientpageComponent implements OnInit {
    
 }
 delete(id:any,rev:any){
+  if(confirm("confirm delete?")=== true){
   this.couch.Delete(id,rev).subscribe(res=>{
     console.log(res);
     this.toastr.success("data deleted successfully");
     window. location. reload();
 
   })
+}else{
+  this.toastr.error("failed to delete");
 }
-
+}
 display() {
 
   this.user_id = localStorage.getItem('userid')
@@ -54,7 +57,9 @@ display() {
 });
 }
 
-
+backClick(){
+  this.router.navigate(['/adminform']);
+}
 
    
 addAdditionalInfo(id,type)

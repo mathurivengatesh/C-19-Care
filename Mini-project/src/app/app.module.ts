@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from  '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DoctorentryComponent } from './doctorentry/doctorentry.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     InchargedetailComponent,
     PatientpageComponent,
     ServiceComponent,
-    PatientdetailComponent
+    PatientdetailComponent,
+    DoctorentryComponent
   ],
   imports: [
     BrowserModule,

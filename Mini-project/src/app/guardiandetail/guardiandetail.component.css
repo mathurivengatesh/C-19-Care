@@ -109,6 +109,13 @@ input[type=submit]:hover {
   border: 1px solid black;
 
 }
+.back-button{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 40px;
+  margin-left: -9rem;
+  
+}
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {

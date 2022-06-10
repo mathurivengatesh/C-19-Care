@@ -15,6 +15,7 @@ import { ServiceComponent } from './service/service.component';
 import { SignupComponent } from './signup/signup.component';
 import { PatientdetailComponent } from './patientdetail/patientdetail.component';
 import { MedicalreportComponent } from './medicalreport/medicalreport.component';
+import { DoctorentryComponent } from './doctorentry/doctorentry.component';
 
 const routes: Routes = [ 
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -32,7 +33,8 @@ const routes: Routes = [
 {path:'patientdetail', component:PatientdetailComponent},
 {path:'guardiandetail', component:GuardiandetailComponent},
 {path:'service', component:ServiceComponent},
-{path:'medicalreport', component:MedicalreportComponent}
+{path:'medicalreport', component:MedicalreportComponent},
+{path:'doctorentry', component:DoctorentryComponent}
 ];
 
 @NgModule({

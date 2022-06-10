@@ -22,7 +22,7 @@
       <li
         id="quaratineform"
         [class.color]="id === 'quarantineform'"
-        (click)="tabchange('quaratineform')"
+        (click)="tabchange('quarantineform')"
       >
         Quaratine Detail
       </li>
@@ -55,6 +55,10 @@
           </thead>
 
           <tbody>
+            <tr *ngIf="personalData.length == 0">
+              No Records Found
+            </tr>
+
             <tr *ngFor="let user of personalData">
               <td>{{ user.fname }}</td>
               <td>{{ user.lname }}</td>
@@ -89,6 +93,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr *ngIf="guardianData.length == 0">
+              No Record Found
+            </tr>
             <tr *ngFor="let user of guardianData">
               <td>{{ user.status }}</td>
 
@@ -113,17 +120,14 @@
             <tr>
               <th>type of Quarntine</th>
               <th>No of days</th>
-              <th>No of days</th>
-              <th>No of days</th>
-              <th>No of days</th>
             </tr>
           </thead>
           <tbody>
+            <tr *ngIf="guardianData.length == 0">
+              No Record Found
+            </tr>
             <tr *ngFor="let user of guardianData">
               <td>{{ user.qtype }}</td>
-              <td>{{ user.days }}</td>
-              <td>{{ user.days }}</td>
-              <td>{{ user.days }}</td>
               <td>{{ user.days }}</td>
             </tr>
           </tbody>
@@ -145,6 +149,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr *ngIf="guardianData.length == 0">
+              No Record Found
+            </tr>
             <tr *ngFor="let user of guardianData">
               <td>{{ user.docname }}</td>
               <td>{{ user.nurname }}</td>

@@ -22,9 +22,11 @@ personalData:any;
   
   }
   store(){
+  this.id = localStorage.getItem('patientid')
+   
     let data = {
       selector: {
-       type: "patient"
+       patientid: this.id
      },
  
    }
@@ -35,6 +37,8 @@ personalData:any;
       this.personalData = this.personal
       console.log(this.personalData[0]);
      for (const array in this.personalData) {
+      let  id:any = this.personalData[array]._id;
+      localStorage.setItem("personalid",id);
       console.log(this.personalData[array])
      }
      
@@ -42,10 +46,10 @@ personalData:any;
    }
   
   display() {
-
+    this.id = localStorage.getItem('personalid')
     let data = {
      selector: {
-      type: "info"
+      patientid: this.id
     },
 
   }

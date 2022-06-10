@@ -11,18 +11,13 @@ let insert = function (paramsvalue) {
   console.log(paramsvalue);
   return cloudant
     .use("c_19_care")
-    .insert(paramsvalue)
-    .then((data) => {
-      console.log("Login Data Inserted into CDB" + data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .insert(paramsvalue);
+    
 };
 let get=function(dbname){
   return cloudant.use(dbname).list();
 }
 let getId= function(value,db){
-  return cloudant.use(db).get(value)
+  return cloudant.use(db).get(value);
 }
 module.exports={insert,get,getId};

@@ -1,0 +1,90 @@
+<section class="book" id="book">
+  <div class="back-button" (click)="backClick()">
+    <img src="../../assets/images/back2.png" alt="backbutton" />
+  </div>
+  <div class="heading">Save <span> Life</span></div>
+
+  <div class="row">
+    <div class="image">
+      <img src="../../assets/images/banner-two-bg.png" alt="book" />
+    </div>
+
+    <form
+      action=""
+      [formGroup]="doctorform"
+      (ngSubmit)="storing(this.doctorform.value)"
+    >
+      <h3>Doctor Entry</h3>
+      <div class="box">
+        <input
+          type="text"
+          id="doctorname"
+          placeholder="your name"
+          class="form-control"
+          formControlName="doctorname"
+        />
+        <div
+          *ngIf="
+            !doctorname?.valid && (doctorname?.dirty || doctorname?.touched)
+          "
+        >
+          <div [hidden]="!doctorname.errors.required" class="text-danger">
+            Name is required
+          </div>
+          <div [hidden]="!doctorname.errors.minlength" class="text-danger">
+            Min Length is 10
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <input
+          type="text"
+          id="specification"
+          placeholder="your specification"
+          formControlName="specification"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            !specification?.valid &&
+            (specification?.dirty || specification?.touched)
+          "
+        >
+          <div [hidden]="!specification.errors.required" class="text-danger">
+            specification is required
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <input
+          type="text"
+          placeholder="your place"
+          class="form-control"
+          formControlName="place"
+        />
+        <div *ngIf="!place?.valid && (place?.dirty || place?.touched)">
+          <div [hidden]="!place.errors.required" class="text-danger">
+            place is required
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <input
+          type="number"
+          id="age"
+          class="form-control"
+          formControlName="age"
+          placeholder="your age"
+        />
+        <div *ngIf="!age?.valid && (age?.dirty || age?.touched)">
+          <div [hidden]="!age.errors.required" class="text-danger">
+            age is required
+          </div>
+        </div>
+      </div>
+
+      <input type="submit" value="submit" class="btn" />
+    </form>
+  </div>
+</section>

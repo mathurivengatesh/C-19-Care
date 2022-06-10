@@ -4,6 +4,7 @@ import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CouchdbService } from '../couchdb.service';
+import { HttpCallInterceptor } from '../interceptor';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,6 +12,7 @@ import { CouchdbService } from '../couchdb.service';
 })
 export class SignupComponent implements OnInit {
   myForm: FormGroup;
+  resObj:any;
   object:any={
     email: '',
     mobileno: '',
@@ -66,10 +68,14 @@ export class SignupComponent implements OnInit {
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
       console.log(data);
+      this.resObj=data;
+      if(this.resObj.errid=="non_200"){
+        return this.toastr.error(this.resObj.name,this.resObj.message)
+      }
       this.toastr.success("registration success");
-      
+      this.router.navigate(['/adminlogin']);
     },err=>{
-      this.toastr.error("registration cancelled",err);
+      this.toastr.error("registration cancelled"+err);
     })
    
   }

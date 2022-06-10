@@ -1,8 +1,11 @@
-<h1>Personal Information</h1>
+<div class="back-button" (click)="backClick()">
+  <img src="../../assets/images/back2.png" alt="backbutton" />
+</div>
 <div class="search">
   <input type="text" [(ngModel)]="search" placeholder="search here" />
   <img src="../../assets/images/search-icon-dark.png" alt="search" />
 </div>
+<h1>Personal Information</h1>
 <table class="table" id="personalform">
   <caption>
     Patient personal data
@@ -24,6 +27,9 @@
   </thead>
 
   <tbody>
+    <tr class="record" *ngIf="patientlist.length == 0">
+      No Records Found
+    </tr>
     <tr *ngFor="let user of patientlist | filter: search">
       <td>{{ user.fname }}</td>
       <td>{{ user.lname }}</td>
