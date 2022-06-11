@@ -14,7 +14,8 @@ export class QuarantinedetailComponent implements OnInit {
 title='tabchange';
 myForm: FormGroup;
 submit=false
-alldata:any
+alldata:any;
+resObj:any;
  user_id = localStorage.getItem('userid');
  
   object:any={
@@ -49,7 +50,7 @@ alldata:any
         age: new FormControl('',[Validators.required]),
         bloodgroup: new FormControl('',[Validators.required]),
         
-          gender: new FormControl('',[Validators.required]),
+          gender:new FormControl(''),
           mobileno: new FormControl('',[Validators.required]),
           address:new FormControl('',[Validators.required]),
           type:new FormControl('patient')
@@ -114,16 +115,18 @@ alldata:any
   
 
   
-    storing(formdata){
+    storing(formdata:any){
       console.log(formdata);
       formdata.user_id = this.user_id;
       console.log("formdata",formdata);
       this.couchdb.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
-        
-    this.toastr.success("data posted successfully");
+        this.resObj=res;
+        this.toastr.success("data posted successfully");
       },err=>{
-        this.toastr.error("data failed to post",err);
+        this.resObj=err;
+        console.log(this.resObj.error.reason);
+        this.toastr.error("data failed to post",this.resObj.error.reason);
       });
     }
     backClick(){

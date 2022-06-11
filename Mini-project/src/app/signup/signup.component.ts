@@ -75,6 +75,8 @@ export class SignupComponent implements OnInit {
       this.toastr.success("registration success");
       this.router.navigate(['/adminlogin']);
     },err=>{
+      this.resObj=err;
+      console.log(this.resObj);
       this.toastr.error("registration cancelled"+err);
     })
    

@@ -50,8 +50,7 @@ storing(formdata){
   console.log("formdata",formdata);
   this.couchdb.add("c_19_care",formdata).subscribe(res=>{
     console.log(res);
-    let  id:any = formdata._id;
-    localStorage.setItem("doctor",id);
+    
 this.toastr.success("data posted successfully");
   },err=>{
     this.toastr.error("data failed to post",err);

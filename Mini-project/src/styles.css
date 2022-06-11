@@ -524,7 +524,10 @@ section:nth-child(even){
 .footer .credit span{
     color:var(--green);
 }
-
+.option{
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
 
 
 

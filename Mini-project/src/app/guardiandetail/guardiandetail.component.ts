@@ -45,7 +45,7 @@ ngOnInit(): void {
         gdob: new FormControl('',[Validators.required]),
         gage: new FormControl('',[Validators.required]),
         gbloodgroup: new FormControl('',[Validators.required]),
-        ggender: new FormControl('',[Validators.required]),
+        ggender: new FormControl(''),
         gmobileno: new FormControl('',[Validators.required]),
         gaddress:new FormControl('',[Validators.required]),
         qtype:new FormControl('',[Validators.required]),

@@ -12,12 +12,13 @@ export class PatientdetailComponent implements OnInit {
 guardian:any;
 guardianData:any;
 personal:any;
-personalData:any;
+personalData:any=[];
   constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) {this.display(); 
     this.store();}
 
   ngOnInit(): void {
-    console.log("patientdetail")
+    console.log("patientdetail");
+    this.tabchange('personalform');
   
   
   }
@@ -68,7 +69,7 @@ personalData:any;
   id:any = "personalform";
   tabchange(ids:any){
     this.id=ids;
-    console.log(this.id);
+    
   }
   logout(){
     localStorage.clear();

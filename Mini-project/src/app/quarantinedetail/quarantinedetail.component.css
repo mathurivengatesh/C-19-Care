@@ -44,7 +44,7 @@
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text],  textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -100,6 +100,10 @@ input[type=submit]:hover {
   width: 40px;
   margin-left: 4rem;
   
+}
+.option{
+  font-weight: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
