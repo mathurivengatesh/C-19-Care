@@ -7,14 +7,12 @@ import { ContactComponent } from './contact/contact.component';
 import { GuardiandetailComponent } from './guardiandetail/guardiandetail.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
-import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientloginComponent } from './patientlogin/patientlogin.component';
 import { PatientpageComponent } from './patientpage/patientpage.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
 import { ServiceComponent } from './service/service.component';
 import { SignupComponent } from './signup/signup.component';
 import { PatientdetailComponent } from './patientdetail/patientdetail.component';
-import { MedicalreportComponent } from './medicalreport/medicalreport.component';
 import { DoctorentryComponent } from './doctorentry/doctorentry.component';
 
 const routes: Routes = [ 
@@ -22,7 +20,6 @@ const routes: Routes = [
 {path:'home', component:HomeComponent},
 {path:'signup', component:SignupComponent},
 {path:'adminform', component:AdminformComponent},
-{path:'inchargedetail', component:InchargedetailComponent},
 {path:'quarantinedetail', component:QuarantinedetailComponent},
 {path:'patientpage',component:PatientpageComponent},
 {path:'about', component:AboutComponent},
@@ -33,7 +30,6 @@ const routes: Routes = [
 {path:'patientdetail', component:PatientdetailComponent},
 {path:'guardiandetail', component:GuardiandetailComponent},
 {path:'service', component:ServiceComponent},
-{path:'medicalreport', component:MedicalreportComponent},
 {path:'doctorentry', component:DoctorentryComponent}
 ];
 

@@ -36,12 +36,7 @@ resObj:any;
    
    }
 
-
-
-
-   
-
-  ngOnInit(): void {
+ ngOnInit(): void {
       this.myForm = new FormGroup({
         fname: new FormControl('',[Validators.required,Validators.minLength(10)]),
         lname: new FormControl('',[Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]),
@@ -49,19 +44,14 @@ resObj:any;
         dob: new FormControl('',[Validators.required]),
         age: new FormControl('',[Validators.required]),
         bloodgroup: new FormControl('',[Validators.required]),
-        
-          gender:new FormControl(''),
-          mobileno: new FormControl('',[Validators.required]),
-          address:new FormControl('',[Validators.required]),
-          type:new FormControl('patient')
+        gender:new FormControl(''),
+        mobileno: new FormControl('',[Validators.required]),
+        address:new FormControl('',[Validators.required]),
+        type:new FormControl('patient')
       })
     
     }
-     
-  
-      
-   
-    get fname() {
+     get fname() {
       return this.myForm.get('fname');
     } 
    
@@ -112,9 +102,6 @@ resObj:any;
         console.error(err)
       })
     }
-  
-
-  
     storing(formdata:any){
       console.log(formdata);
       formdata.user_id = this.user_id;
@@ -125,7 +112,6 @@ resObj:any;
         this.toastr.success("data posted successfully");
       },err=>{
         this.resObj=err;
-        console.log(this.resObj.error.reason);
         this.toastr.error("data failed to post",this.resObj.error.reason);
       });
     }

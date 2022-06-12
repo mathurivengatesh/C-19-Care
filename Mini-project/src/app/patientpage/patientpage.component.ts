@@ -18,8 +18,6 @@ export class PatientpageComponent implements OnInit {
 
   ngOnInit(): void {
   console.log("patientpage")
-
-   
 }
 delete(id:any,rev:any){
   if(confirm("confirm delete?")=== true){
@@ -41,11 +39,7 @@ display() {
    "keys":["patient"+ this.user_id],
    "include_docs":true
  }
- 
-   
-   
-  
-   this.couch.getpatient(data).subscribe(res => {
+  this.couch.getpatient(data).subscribe(res => {
   this.personal=res;
   console.log(res);
   let response:any=res
@@ -56,15 +50,11 @@ display() {
   }
 });
 }
-
 backClick(){
   this.router.navigate(['/adminform']);
 }
-
-   
-addAdditionalInfo(id,type)
+addAdditionalInfo(id:any,type:any)
 {
- 
   this.router.navigate(
     ['/guardiandetail'],
     { queryParams: { id: id, 'type': type } }

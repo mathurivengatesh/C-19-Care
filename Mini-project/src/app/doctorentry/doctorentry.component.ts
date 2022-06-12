@@ -11,15 +11,16 @@ import { CouchdbService } from '../couchdb.service';
   styleUrls: ['./doctorentry.component.css']
 })
 export class DoctorentryComponent implements OnInit {
-doctorform:FormGroup
-object:any=[]
+doctorForm:FormGroup
+object:any=[];
+resObj:any;
   formdata: any;
   constructor(private couchdb:CouchdbService,private toastr:ToastrService,private router:Router) {
     console.log("doctor entry") ;
   }
 
   ngOnInit(): void {
-    this.doctorform = new FormGroup({
+    this.doctorForm = new FormGroup({
       doctorname: new FormControl('',[Validators.required,Validators.minLength(10)]),
       specification: new FormControl('',[Validators.required]),
       place:new FormControl('',[Validators.required]),
@@ -30,30 +31,31 @@ object:any=[]
 
 }
 get doctorname() {
-  return this.doctorform.get('doctorname');
+  return this.doctorForm.get('doctorname');
 } 
 
 get specification() {
-  return this.doctorform.get('specification');
+  return this.doctorForm.get('specification');
 } 
 
 get place() {
-  return this.doctorform.get('place');
+  return this.doctorForm.get('place');
 } 
 
 get age() {
-  return this.doctorform.get('age');
+  return this.doctorForm.get('age');
 } 
 
-storing(formdata){
+storing(formdata:any){
   console.log(formdata);
   console.log("formdata",formdata);
   this.couchdb.add("c_19_care",formdata).subscribe(res=>{
     console.log(res);
-    
+    this.resObj=res;
 this.toastr.success("data posted successfully");
   },err=>{
-    this.toastr.error("data failed to post",err);
+    this.resObj=err;
+    this.toastr.error("data failed to post",this.resObj.error.reason);
   });
 }
 backClick(){

@@ -12,18 +12,17 @@ import { ApiServiceService } from '../api-service.service';
 })
 export class GuardiandetailComponent implements OnInit {
 title='tabchange';
-id:any
-type:any
-alldata:any
-data:any
-guardianform:FormGroup;
+id:any;
+type:any;
+allData:any;
+data:any;
+guardianForm:FormGroup;
 guardian:any;
 guardianData:any;
- 
-  object:any=[]
+resObj:any;
+object:any=[];
+doctorList:any=[];
    
-  
-  
   constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
       console.log(params);
@@ -31,16 +30,15 @@ guardianData:any;
       this.type=params.type;
       console.log(this.id);
       console.log(this.type);
-      
     }
      );
    this.display();
+   this.dropDown();
    }
 ngOnInit(): void {
-     
-      this.guardianform = new FormGroup({
+     this.guardianForm = new FormGroup({
         status: new FormControl('',[Validators.required]),
-        gfname: new FormControl('',[Validators.required, Validators.minLength(10)]),
+        gfname: new FormControl('',[Validators.required, Validators.minLength(8)]),
         glname:new FormControl('',[Validators.required]),
         gdob: new FormControl('',[Validators.required]),
         gage: new FormControl('',[Validators.required]),
@@ -55,116 +53,115 @@ ngOnInit(): void {
         attenname:new FormControl('',[Validators.required]),
         driver:new FormControl('',[Validators.required]),
       })
-      
-     
-  
-     
     }
-   
-   
-  
-      
-   
     get status() {
-      return this.guardianform.get('status');
+      return this.guardianForm.get('status');
     } 
    
     get gfname() {
-      return this.guardianform.get('gfname');
+      return this.guardianForm.get('gfname');
     } 
    
     get glname() {
-      return this.guardianform.get('glname');
+      return this.guardianForm.get('glname');
     } 
    
     get gdob() {
-      return this.guardianform.get('gdob');
+      return this.guardianForm.get('gdob');
+    } 
+    get gbloodgroup() {
+      return this.guardianForm.get('gbloodgroup');
     } 
    
     get gage() {
-      return this.guardianform.get('gage');
+      return this.guardianForm.get('gage');
     } 
    
     get ggender() {
-      return this.guardianform.get('ggender');
+      return this.guardianForm.get('ggender');
     } 
    
     get gmobileno() {
-      return this.guardianform.get("gmobileno");
+      return this.guardianForm.get("gmobileno");
     } 
    
     get gaddress() {
-      return this.guardianform.get("gaddress");
+      return this.guardianForm.get("gaddress");
     } 
     get qtype() {
-      return this.guardianform.get("qtype");
+      return this.guardianForm.get("qtype");
     } 
     get days() {
-      return this.guardianform.get("days");
+      return this.guardianForm.get("days");
     } 
     get docname() {
-      return this.guardianform.get("docname");
+      return this.guardianForm.get("docname");
     } 
     get nurname() {
-      return this.guardianform.get("nurname");
+      return this.guardianForm.get("nurname");
     } 
     get attenname() {
-      return this.guardianform.get("attenname");
+      return this.guardianForm.get("attenname");
     } 
     get driver() {
-      return this.guardianform.get("driver");
+      return this.guardianForm.get("driver");
     } 
    
-    storing(formdata){
-      console.log(formdata);
-      formdata["patientid"]=this.id;
-      formdata["type"]=this.type;
-      console.log("formdata",formdata);
-      this.couchdb.add("c_19_care",formdata).subscribe(res=>{
-        console.log(res);
-        this.toastr.success("data posted successfully")
-      },err=>{
-      this.toastr.error("failed to post data",err)
+    dropDown() {
+      const data = {
+        selector:{
+        "type": "doctor"
+        }
+      }
+      this.couchdb.addInfoEdit( data).subscribe((res: any) => {
+        console.log(res)
+        this.doctorList = res.docs
+        console.log("doctor list", this.doctorList)
       });
     }
-   
-    display() {
-
-      let data = {
-       selector: {
-        patientid:this.id,
-        type:this.type
-
-      },
   
+  
+    storing(formData:any){
+      console.log(formData);
+      formData["patientid"]=this.id;
+      formData["type"]=this.type;
+      console.log("formData",formData);
+      this.couchdb.add("c_19_care",formData).subscribe(res=>{
+        console.log(res);
+        this.resObj=res;
+        this.toastr.success("data posted successfully")
+      },err=>{
+        this.resObj=err;
+      this.toastr.error("failed to post data",this.resObj.error.reason)
+      });
     }
+   display() {
+      let data = {
+      selector: {
+      patientid:this.id,
+      type:this.type
+      },
+  }
     console.log(data)
-    this.couchdb.validate4(data).subscribe(res => {
+    this.couchdb.addInfoEdit(data).subscribe(res => {
       this.guardian=res;
       console.log(res);
       this.guardian = this.guardian.docs;
-       //this.guardianData = this.guardian
-      // 
-      
-      if(this.guardian.length>0){
-
-        this.setFormValue();
-
+       if(this.guardian.length>0){
+       this.setFormValue();
       }
-      
-     });
-    
-
-   }
+       });
+    }
    setFormValue(){
      console.log(this.guardian[0].status)
      this.status.setValue(this.guardian[0].status);
      this.gfname.setValue(this.guardian[0].gfname);
      this.glname.setValue(this.guardian[0].glname);
      this.gdob.setValue(this.guardian[0].gdob);
-     this.gage.setValue(this.guardian[0].gbloodgroup);
-     this.ggender.setValue(this.guardian[0].gender);
-     this.gmobileno.setValue(this.guardian[0].ggender);
+     this.gbloodgroup.setValue(this.guardian[0].gbloodgroup);
+     this.gage.setValue(this.guardian[0].gage);
+     this.ggender.setValue(this.guardian[0].ggender);
+     this.gmobileno.setValue(this.guardian[0].gmobileno);
      this.gaddress.setValue(this.guardian[0].gaddress);
      this.qtype.setValue(this.guardian[0].qtype);
      this.days.setValue(this.guardian[0].days);
@@ -176,10 +173,9 @@ ngOnInit(): void {
    backClick(){
     this.router.navigate(['/patientpage']);
   } 
-id1:any = "guardianform";
+id1:any = "guardianForm";
 tabchange(ids:any){
   this.id=ids;
   console.log(this.id);
 }
-
 }

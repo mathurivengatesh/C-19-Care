@@ -5,21 +5,21 @@
   <div class="tab">
     <ul>
       <li
-        id1="guardianform"
-        [class.color]="id1 === 'guardianform'"
-        (click)="tabchange('guardianform')"
+        id1="guardianForm"
+        [class.color]="id1 === 'guardianForm'"
+        (click)="tabchange('guardianForm')"
       >
         Guardian Detail
       </li>
     </ul>
 
     <div class="content">
-      <div class="content-value" *ngIf="id1 === 'guardianform'">
+      <div class="content-value" *ngIf="id1 === 'guardianForm'">
         <div class="container-form">
           <form
             action=""
-            [formGroup]="guardianform"
-            (ngSubmit)="storing(this.guardianform.value)"
+            [formGroup]="guardianForm"
+            (ngSubmit)="storing(this.guardianForm.value)"
           >
             <div class="row">
               <div class="col-25">
@@ -266,16 +266,13 @@
                   formControlName="docname"
                   class="form-control"
                 >
-                  <option>select doctor Name</option>
-                  <!-- <option
-                    *ngFor="let web of locationList"
-                    value="{{ web._id }}"
+                  <option>Choose doctor</option>
+                  <option
+                    *ngFor="let web of doctorList"
+                    value="{{ web['_id'] }}"
                   >
-                    {{ web.location }}
-                  </option> -->
-                  <option value="rajaram">Rajaram</option>
-                  <option value="rajasekar">Rajasekar</option>
-                  <option value="rani">Rani</option>
+                    {{ web.doctorname }}
+                  </option>
                 </select>
               </div>
             </div>

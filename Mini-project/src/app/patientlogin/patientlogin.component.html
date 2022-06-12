@@ -1,4 +1,4 @@
-<form class="modal-content animate" [formGroup]="patientlogin">
+<form class="modal-content animate" [formGroup]="patientLogin">
   <div class="imgcontainer">
     <span
       routerLink="/home"
@@ -21,9 +21,9 @@
       />
       <div
         *ngIf="
-          patientlogin.get('patientid').invalid &&
-          (patientlogin.get('patientid').dirty ||
-            patientlogin.get('patientid').touched)
+          patientLogin.get('patientid').invalid &&
+          (patientLogin.get('patientid').dirty ||
+            patientLogin.get('patientid').touched)
         "
         class="text-danger"
       >
@@ -40,9 +40,9 @@
       />
       <div
         *ngIf="
-          patientlogin.get('mobileno').invalid &&
-          (patientlogin.get('mobileno').dirty ||
-            patientlogin.get('mobileno').touched)
+          patientLogin.get('mobileno').invalid &&
+          (patientLogin.get('mobileno').dirty ||
+            patientLogin.get('mobileno').touched)
         "
         class="text-danger"
       >
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <button type="submit" (click)="adminFormData(this.patientlogin.value)">
+    <button type="submit" (click)="adminFormData(this.patientLogin.value)">
       Login
     </button>
     <label>

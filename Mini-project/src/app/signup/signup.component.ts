@@ -4,7 +4,6 @@ import { ApiServiceService } from '../api-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CouchdbService } from '../couchdb.service';
-import { HttpCallInterceptor } from '../interceptor';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,14 +12,7 @@ import { HttpCallInterceptor } from '../interceptor';
 export class SignupComponent implements OnInit {
   myForm: FormGroup;
   resObj:any;
-  object:any={
-    email: '',
-    mobileno: '',
-    password: '',
-    cpsw:'',
-    _id:''
-  
-  };
+  object:any;
   alldata:any;
   submit=false
   constructor(private api:ApiServiceService, private router:Router, private toastr:ToastrService,private couchdb:CouchdbService) {
@@ -56,14 +48,7 @@ export class SignupComponent implements OnInit {
       console.error(err)
     })
   }
-  onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Email', form.value.email);
-    console.log('Mobileno', form.value.mobileno);
-    console.log('Password', form.value.password);
-    console.log('Cpsw', form.value.cpsw);
-    console.log('type', form.value.type);
-  }
+ 
   adduser(Formvalue:NgForm){
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
@@ -78,7 +63,7 @@ export class SignupComponent implements OnInit {
       this.resObj=err;
       console.log(this.resObj);
       this.toastr.error("registration cancelled"+err);
-    })
+    });
    
   }
   

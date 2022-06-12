@@ -15,7 +15,7 @@ export class AdminformComponent implements OnInit {
   ngOnInit(): void {
     console.log("adminform")
   }
-logout(){
+logOut(){
   localStorage.clear();
   this.router.navigate(['/home'],{});
   this.toastr.success("logged out");

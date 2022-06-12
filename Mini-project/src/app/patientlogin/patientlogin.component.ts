@@ -11,41 +11,31 @@ import { CouchdbService } from '../couchdb.service';
   styleUrls: ['./patientlogin.component.css']
 })
 export class PatientloginComponent implements OnInit {
-  patientlogin:FormGroup;
+  patientLogin:FormGroup;
   flag=0;
   object:any=[];
-  alldata:any;
+  allData:any;
  
-
   constructor(private router:Router,private api:ApiServiceService, private couchdb:CouchdbService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.patientlogin = new FormGroup({
+    this.patientLogin = new FormGroup({
       patientid: new FormControl('',[Validators.required]),
       mobileno: new FormControl('',[Validators.required]),
     });
     this.couchdb.validate().subscribe(data=>{
-      console.log(data);
-      console.log('Data was fetching');
-      this.alldata=data;
-      this.alldata=this.alldata.docs;
-      console.log(this.alldata);
-      for(const i in this.alldata){
-       if(Object.prototype.hasOwnProperty.call(this.alldata,i)){
-        const elt = this.alldata[i];
-        console.log(elt._id);
-        this.api.getsupplierId(elt._id).subscribe(res=>{
-        console.log(res);
+      this.allData=data;
+      this.allData=this.allData.docs;
+      for(const i in this.allData){
+       if(Object.prototype.hasOwnProperty.call(this.allData,i)){
+        const elt = this.allData[i];
+        this.api.getSupplierId(elt._id).subscribe(res=>{
         this.object.push(res);
-        console.log('Fetched successfuly in add component');
-        
         })
        }
-   }
-   
+ }
    })
-
-  }
+}
 
 adminFormData(formvalue: any) {
 console.log(formvalue);
@@ -67,9 +57,6 @@ if (this.flag == 1) {
   location.reload();
 }
 }
-  
-  
-
 }
     
 

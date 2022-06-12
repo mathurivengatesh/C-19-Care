@@ -11,19 +11,7 @@ export class CouchdbService {
   dbPassword ='58de0ca6ebd4250a97d0a7d300191f68';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
 
-  object:any={
-    fname:'',
-    lname:'',
-    patientid:'',
-    dob:'',
-    age:'',
-    bloodgroup:'',
-    gender:'',
-    mobileno:'',
-    address:'',
-    type:'',
-
-  }
+  object:any;
 
   constructor(private http:HttpClient) { }
   httpOptions = {
@@ -61,19 +49,7 @@ export class CouchdbService {
       headers: { Authorization: basicAuth },
     });
   }
-  validateDoc(){
-    const url =  this.url +'c_19_care/_find';
-    const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
-    const object = {
-      selector: {
-        type: 'doctor',
-      },
-    };
-    return this.http.post(url, object, {
-      headers: { Authorization: basicAuth },
-    });
-  }
-
+  
   validate2(patient:any){
     const url =  this.url +'c_19_care/_find';
     const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
@@ -101,7 +77,7 @@ export class CouchdbService {
       headers: { Authorization: basicAuth },
     });
   }
-  validate4(data:any){
+  addInfoEdit(data:any){
     const url =  this.url +'c_19_care/_find';
     const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
     console.log(data);

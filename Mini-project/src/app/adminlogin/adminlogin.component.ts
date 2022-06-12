@@ -13,7 +13,7 @@ export class AdminloginComponent implements OnInit {
   login: FormGroup;
   flag=0;
   object:any=[];
-  alldata:any;
+  allData:any;
   constructor( private api: ApiServiceService,
     private router: Router, private toastr:ToastrService) { }
 
@@ -23,25 +23,16 @@ export class AdminloginComponent implements OnInit {
       password: new FormControl('',[Validators.required,Validators.minLength(8)]),
     });
       
-      this.api.getsupplier().subscribe(data=>{
-        console.log(data);
-        console.log('Data was fetching');
-        this.alldata=data;
-        this.alldata=this.alldata.rows;
-        console.log(this.alldata);
-        for(const i in this.alldata){
-         if(Object.prototype.hasOwnProperty.call(this.alldata,i)){
-          const elt = this.alldata[i];
-          console.log(elt.id);
-          this.api.getsupplierId(elt.id).subscribe(res=>{
-           console.log(res);
+      this.api.getSupplier().subscribe(data=>{
+        this.allData=data;
+        this.allData=this.allData.rows;
+        for(const i in this.allData){
+         if(Object.prototype.hasOwnProperty.call(this.allData,i)){
+          const elt = this.allData[i];
+          this.api.getSupplierId(elt.id).subscribe(res=>{
            this.object.push(res);
-           console.log('Fetched successfuly in add component');
-          
           })
-         }
-     }
-     
+         } }
      })
   }
  

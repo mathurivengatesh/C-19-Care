@@ -16,9 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminformComponent } from './adminform/adminform.component';
 import { GuardiandetailComponent } from './guardiandetail/guardiandetail.component';
-import { MedicalreportComponent } from './medicalreport/medicalreport.component';
 import { QuarantinedetailComponent } from './quarantinedetail/quarantinedetail.component';
-import { InchargedetailComponent } from './inchargedetail/inchargedetail.component';
 import { PatientpageComponent } from './patientpage/patientpage.component';
 import { ServiceComponent } from './service/service.component';
 import { PatientdetailComponent } from './patientdetail/patientdetail.component';
@@ -44,9 +42,7 @@ import { DoctorentryComponent } from './doctorentry/doctorentry.component';
     SignupComponent,
     AdminformComponent,
     GuardiandetailComponent,
-    MedicalreportComponent,
     QuarantinedetailComponent,
-    InchargedetailComponent,
     PatientpageComponent,
     ServiceComponent,
     PatientdetailComponent,
