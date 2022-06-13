@@ -44,7 +44,7 @@ app.listen(port,(err)=>{
     }
     console.log(`http://localhost:8000`);
 })
-app.get("/getsupplier", (request, response) => {
+app.get("/getData", (request, response) => {
   console.log(request);
   dbconnection.get("c_19_care").then((res) => {
     if (res) {
@@ -52,6 +52,9 @@ app.get("/getsupplier", (request, response) => {
     } else {
       response.send(err);
     }
+  })
+  .catch((err)=>{
+    console.log("data doesn't exist",err);
   });
 });
 app.get("/getId/:id", (request, response) => {
@@ -62,5 +65,8 @@ app.get("/getId/:id", (request, response) => {
     } else {
       response.send(err);
     }
+  })
+  .catch((err)=>{
+    console.log("data id doesn't exist",err);
   });
 });
