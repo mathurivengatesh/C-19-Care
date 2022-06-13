@@ -4,7 +4,6 @@ const app = connection();
 app.disable("x-powered-by");
 let helmet = require("helmet");
 app.use(helmet.hidePoweredBy());
-
 const port = 8000;
 const cors = require("cors");
 const dbconnection = require("./data");
