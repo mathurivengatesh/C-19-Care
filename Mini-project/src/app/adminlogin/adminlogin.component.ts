@@ -23,14 +23,14 @@ export class AdminloginComponent implements OnInit {
       password: new FormControl('',[Validators.required,Validators.minLength(8)]),
     });
       
-      this.api.getSupplier().subscribe(data=>{
+      this.api.getData().subscribe(data=>{
         this.allData=data;
         this.allData=this.allData.rows;
         for(const i in this.allData){
          if(Object.prototype.hasOwnProperty.call(this.allData,i)){
           const elt = this.allData[i];
-          this.api.getSupplierId(elt.id).subscribe(res=>{
-           this.object.push(res);
+          this.api.getDataId(elt.id).subscribe(resp=>{
+           this.object.push(resp);
           })
          } }
      })

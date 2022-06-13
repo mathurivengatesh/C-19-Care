@@ -11,10 +11,10 @@ export class ApiServiceService {
     return this.http.post("http://localhost:8000/signup",formobject)
 
   }
-  getSupplier(){
-    return this.http.get('http://localhost:8000/getsupplier/');
+  getData(){
+    return this.http.get('http://localhost:8000/getData/');
   }
-  getSupplierId(id:any){
+  getDataId(id:any){
     return this.http.get(`http://localhost:8000/getId/${id}`);
   }
 }

@@ -56,9 +56,9 @@ app.get("/getsupplier", (request, response) => {
 });
 app.get("/getId/:id", (request, response) => {
   console.log(request);
-  dbconnection.getId(request.params.id,"c_19_care").then((res) => {
-    if (res) {
-      response.send(res);
+  dbconnection.getId(request.params.id,"c_19_care").then((resp) => {
+    if (resp) {
+      response.send(resp);
     } else {
       response.send(err);
     }

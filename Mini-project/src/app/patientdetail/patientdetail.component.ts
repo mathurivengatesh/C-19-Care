@@ -19,9 +19,7 @@ personalData:any=[];
   ngOnInit(): void {
     console.log("patientdetail");
     this.tabchange('personalform');
-  
-  
-  }
+   }
   store(){
   this.id = localStorage.getItem('patientid')
    

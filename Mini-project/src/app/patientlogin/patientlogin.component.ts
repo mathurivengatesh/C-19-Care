@@ -29,8 +29,8 @@ export class PatientloginComponent implements OnInit {
       for(const i in this.allData){
        if(Object.prototype.hasOwnProperty.call(this.allData,i)){
         const elt = this.allData[i];
-        this.api.getSupplierId(elt._id).subscribe(res=>{
-        this.object.push(res);
+        this.api.getDataId(elt._id).subscribe(resp=>{
+        this.object.push(resp);
         })
        }
  }

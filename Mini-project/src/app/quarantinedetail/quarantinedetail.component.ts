@@ -18,21 +18,8 @@ alldata:any;
 resObj:any;
  user_id = localStorage.getItem('userid');
  
-  object:any={
-    fname:'',
-    lname:'',
-    patientid:'',
-    dob:'',
-    age:'',
-    bloodgroup:'',
-    gender:'',
-    mobileno:'',
-    address:'',
-    type:'',
-    
-  }
- 
-  constructor(private couchdb:CouchdbService,private router:Router, private toastr:ToastrService,private api:ApiServiceService) {
+  object:any
+ constructor(private couchdb:CouchdbService,private router:Router, private toastr:ToastrService,private api:ApiServiceService) {
    
    }
 

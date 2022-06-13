@@ -10,7 +10,6 @@ export class CouchdbService {
   dbUserName='apikey-v2-2mxwaz89u58vkezj2e5jfc41xn3komuaq1j49fhhmu8p';
   dbPassword ='58de0ca6ebd4250a97d0a7d300191f68';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
-
   object:any;
 
   constructor(private http:HttpClient) { }

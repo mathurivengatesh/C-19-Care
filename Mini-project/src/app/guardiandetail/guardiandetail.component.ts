@@ -23,8 +23,7 @@ resObj:any;
 object:any=[];
 doctorList:any=[];
 
-   
-  constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
+ constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
       console.log(params);
       this.id=params.id;
