@@ -22,6 +22,7 @@ guardianData:any;
 resObj:any;
 object:any=[];
 doctorList:any=[];
+
    
   constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
@@ -149,6 +150,7 @@ ngOnInit(): void {
       this.guardian = this.guardian.docs;
        if(this.guardian.length>0){
        this.setFormValue();
+       this.toastr.error("data already exist ");
       }
        });
     }
