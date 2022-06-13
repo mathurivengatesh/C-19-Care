@@ -23,7 +23,7 @@ export class PatientloginComponent implements OnInit {
       patientid: new FormControl('',[Validators.required]),
       mobileno: new FormControl('',[Validators.required]),
     });
-    this.couchdb.validate().subscribe(data=>{
+    this.couchdb.patientLogin().subscribe(data=>{
       this.allData=data;
       this.allData=this.allData.docs;
       for(const i in this.allData){

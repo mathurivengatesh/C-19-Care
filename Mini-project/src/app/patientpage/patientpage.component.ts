@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class PatientpageComponent implements OnInit {
   personal:any;
   personalData:any;search:any;
-  user_id:any
+  user:any
   patientlist:any=[]
  
   constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService,private activatedroute:ActivatedRoute) {this.display() }
@@ -33,10 +33,10 @@ delete(id:any,rev:any){
 }
 display() {
 
-  this.user_id = localStorage.getItem('userid')
+  this.user = localStorage.getItem('user')
  
  const data={
-   "keys":["patient"+ this.user_id],
+   "keys":["patient"+ this.user],
    "include_docs":true
  }
   this.couch.getpatient(data).subscribe(res => {

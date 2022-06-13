@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
       'email':emailValue,
       'type':'user'
     } 
-    this.couchdb.validate3(email).subscribe((response:any)=>{
+    this.couchdb.emailExist(email).subscribe((response:any)=>{
       console.log(response)
       if(response.docs.length >=1){
       this.toastr.error("email already exist");

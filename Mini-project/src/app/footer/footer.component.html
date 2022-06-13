@@ -2,13 +2,21 @@
   <div class="box-container">
     <div class="box">
       <h3>quick links</h3>
-      <a href="#"> <em class="fas fa-chevron-right"></em> home </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> services </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> about </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> doctors </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> book </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> review </a>
-      <a href="#"> <em class="fas fa-chevron-right"></em> blogs </a>
+      <a href="../home/home.component.html">
+        <em class="fas fa-chevron-right"></em> home
+      </a>
+      <a routerLink="/service" routerLinkActive="active">
+        <em class="fas fa-chevron-right"></em> services
+      </a>
+      <a routerLink="/about" routerLinkActive="active">
+        <em class="fas fa-chevron-right"></em> about
+      </a>
+      <a routerLink="/help" routerLinkActive="active">
+        <em class="fas fa-chevron-right"></em> help
+      </a>
+      <a routerLink="/contact" routerLinkActive="active">
+        <em class="fas fa-chevron-right"></em> contact us
+      </a>
     </div>
 
     <div class="box">
@@ -24,17 +32,14 @@
       <h3>contact info</h3>
       <a href="#"> <em class="fas fa-phone"></em> +123-456-7890 </a>
       <a href="#"> <em class="fas fa-phone"></em> +111-222-3333 </a>
-      <a href="#"> <em class="fas fa-envelope"></em> shaikhanas@gmail.com </a>
-      <a href="#"> <em class="fas fa-envelope"></em> anasbhai@gmail.com </a>
-      <a href="#">
-        <em class="fas fa-map-marker-alt"></em> mumbai, india - 400104
-      </a>
+      <a href="#"> <em class="fas fa-envelope"></em> who.health@gmail.com </a>
+      <a href="#"> <em class="fas fa-envelope"></em> medcare@gmail.com </a>
+      <a href="#"> <em class="fas fa-map-marker-alt"></em> india - 400104 </a>
     </div>
 
     <div class="box">
       <h3>follow us</h3>
       <a href="#"> <em class="fab fa-facebook-f"></em> facebook </a>
-      <a href="#"> <em class="fab fa-twitter"></em> twitter </a>
       <a href="#"> <em class="fab fa-twitter"></em> twitter </a>
       <a href="#"> <em class="fab fa-instagram"></em> instagram </a>
       <a href="#"> <em class="fab fa-linkedin"></em> linkedin </a>
@@ -42,3 +47,4 @@
     </div>
   </div>
 </section>
+<router-outlet></router-outlet>

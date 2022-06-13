@@ -16,7 +16,7 @@ myForm: FormGroup;
 submit=false
 alldata:any;
 resObj:any;
- user_id = localStorage.getItem('userid');
+ user = localStorage.getItem('user');
  
   object:any
  constructor(private couchdb:CouchdbService,private router:Router, private toastr:ToastrService,private api:ApiServiceService) {
@@ -76,7 +76,7 @@ resObj:any;
         'patientid':idValue,
         'type':'patient'
       } 
-      this.couchdb.validate2(patient).subscribe((response:any)=>{
+      this.couchdb.patientIdExist(patient).subscribe((response:any)=>{
         console.log(response)
         if(response.docs.length >=1){
         this.toastr.error("Id already exist");
@@ -91,17 +91,24 @@ resObj:any;
     }
     storing(formdata:any){
       console.log(formdata);
-      formdata.user_id = this.user_id;
+      formdata.user = this.user;
       console.log("formdata",formdata);
+      if(this.myForm.valid){
       this.couchdb.add("c_19_care",formdata).subscribe(res=>{
         console.log(res);
         this.resObj=res;
         this.toastr.success("data posted successfully");
+        this.myForm.reset();
+      
       },err=>{
         this.resObj=err;
         this.toastr.error("data failed to post",this.resObj.error.reason);
       });
     }
+    else{
+      this.toastr.error("data failed to post");
+    }
+  }
     backClick(){
       this.router.navigate(['/adminform']);
     }

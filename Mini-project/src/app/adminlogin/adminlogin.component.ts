@@ -45,7 +45,7 @@ adminFormData(formvalue: any) {
       i.password == formvalue.password
     ) {
       let  id:any = i._id;
-    localStorage.setItem("userid",id);
+    localStorage.setItem("user",id);
       this.flag = 1;
     }
   }

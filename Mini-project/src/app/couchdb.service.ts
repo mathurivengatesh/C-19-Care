@@ -36,7 +36,7 @@ export class CouchdbService {
   this.url= this.url+'c_19_care/'+id+'?rev='+rev;
   return this.http.delete(this.url,this.httpOptions)
   }
-  validate(){
+  patientLogin(){
     const url =  this.url +'c_19_care/_find';
     const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
     const object = {
@@ -49,7 +49,7 @@ export class CouchdbService {
     });
   }
   
-  validate2(patient:any){
+  patientIdExist(patient:any){
     const url =  this.url +'c_19_care/_find';
     const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
     const object = {
@@ -62,7 +62,7 @@ export class CouchdbService {
       headers: { Authorization: basicAuth },
     });
   }
-    validate3(user:any){
+    emailExist(user:any){
       const url =  this.url +'c_19_care/_find';
       const basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this. dbPassword );
       const object = {
@@ -87,5 +87,18 @@ export class CouchdbService {
   getpatient(data:any){
     const url="https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/c_19_care/_design/patientpage/_view/detail"
     return this.http.post(url,data,this.httpOptions)
+  }
+  getAllData(docId:Array<string>){
+    console.log(docId)
+    const url = `https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/c_19_care/_all_docs?include_docs=true&keys=["`+docId.join('","')+`"]`
+   
+    return this.http.get(url,this.httpOptions);
+  }
+  getDataById(id:string){
+    // console.log(docId)
+    const url = `https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/c_19_care/${id}`
+   
+    return this.http.get(url,this.httpOptions);
+  
   }
 }

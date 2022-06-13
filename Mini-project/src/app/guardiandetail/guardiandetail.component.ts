@@ -22,6 +22,7 @@ guardianData:any;
 resObj:any;
 object:any=[];
 doctorList:any=[];
+submit=false;
 
  constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
@@ -123,7 +124,7 @@ ngOnInit(): void {
   
     storing(formData:any){
       console.log(formData);
-      formData["patientid"]=this.id;
+      formData["patient"]=this.id;
       formData["type"]=this.type;
       console.log("formData",formData);
       this.couchdb.add("c_19_care",formData).subscribe(res=>{
@@ -138,7 +139,7 @@ ngOnInit(): void {
    display() {
       let data = {
       selector: {
-      patientid:this.id,
+      patient:this.id,
       type:this.type
       },
   }
@@ -150,7 +151,9 @@ ngOnInit(): void {
        if(this.guardian.length>0){
        this.setFormValue();
        this.toastr.error("data already exist ");
-      }
+       this.submit=true;
+      this.toastr.error("data can't be posted again");
+        }
        });
     }
    setFormValue(){

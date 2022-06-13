@@ -13,6 +13,11 @@ guardian:any;
 guardianData:any;
 personal:any;
 personalData:any=[];
+alluser:any=[];
+lookupIdArray=[];
+docId:any=[];
+dataItem:any;
+value:any;
   constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) {this.display(); 
     this.store();}
 
@@ -37,7 +42,7 @@ personalData:any=[];
       console.log(this.personalData[0]);
      for (const array in this.personalData) {
       let  id:any = this.personalData[array]._id;
-      localStorage.setItem("personalid",id);
+      localStorage.setItem("patient",id);
       console.log(this.personalData[array])
      }
      
@@ -45,10 +50,10 @@ personalData:any=[];
    }
   
   display() {
-    this.id = localStorage.getItem('personalid')
+    this.id = localStorage.getItem('patient')
     let data = {
      selector: {
-      patientid: this.id
+      patient: this.id
     },
 
   }
@@ -56,13 +61,18 @@ personalData:any=[];
     this.guardian=res;
     console.log(res);
     this.guardian = this.guardian.docs;
+    console.log(this.guardian);
      this.guardianData = this.guardian
      console.log(this.guardianData[0]);
-    for (const array in this.guardianData) {
-     console.log(this.guardianData[array])
-    }
-    
-   });
+     console.log(this.guardian[0].docname);
+     this.docId = this.guardian[0].docname;
+    this.couch.getDataById(this.docId).subscribe(dataItem =>{
+      console.log(dataItem);
+      this.value=data;
+      this.guardian[0].docname=this.value.doctorname;
+      console.log(this.guardian.docname);
+    })
+});
   }
   id:any = "personalform";
   tabchange(ids:any){
