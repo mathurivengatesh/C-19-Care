@@ -18,7 +18,7 @@ export class AdminformComponent implements OnInit {
 logOut(){
   localStorage.clear();
   this.router.navigate(['/home'],{});
-  this.toastr.success("logged out");
+  this.toastr.success("Logged Out Successfully");
 
 }
 }

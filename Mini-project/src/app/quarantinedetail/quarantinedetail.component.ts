@@ -89,28 +89,29 @@ resObj:any;
         console.error(err)
       })
     }
-    storing(formdata:any){
+    patientFormEntry(formdata:any){
       console.log(formdata);
-      formdata.user = this.user;
       console.log("formdata",formdata);
       if(this.myForm.valid){
-      this.couchdb.add("c_19_care",formdata).subscribe(res=>{
-        console.log(res);
-        this.resObj=res;
-        this.toastr.success("data posted successfully");
-        this.myForm.reset();
+      formdata.user = this.user;
+      formdata['childRecordExist'] = false;
+      this.couchdb.add(formdata).subscribe(res=>{
+      console.log(res);
+       this.resObj=res;
+      this.toastr.success("Data Posted Successfully");
+      this.myForm.reset();
       
       },err=>{
         this.resObj=err;
-        this.toastr.error("data failed to post",this.resObj.error.reason);
+        this.toastr.error("Data Failed to Post",this.resObj.error.reason);
       });
     }
     else{
-      this.toastr.error("data failed to post");
+      this.toastr.error("Data Failed to Post");
     }
   }
     backClick(){
-      this.router.navigate(['/adminform']);
+      this.router.navigate(['/patientpage']);
     }
    
 id:any = "personalform";

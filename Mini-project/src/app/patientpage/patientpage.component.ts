@@ -14,7 +14,7 @@ export class PatientpageComponent implements OnInit {
   user:any
   patientlist:any=[]
  
-  constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService,private activatedroute:ActivatedRoute) {this.display() }
+  constructor(private couch:CouchdbService,private router:Router, private toastr:ToastrService,private activatedroute:ActivatedRoute) {this.patientListView() }
 
   ngOnInit(): void {
   console.log("patientpage")
@@ -23,15 +23,15 @@ delete(id:any,rev:any){
   if(confirm("confirm delete?")=== true){
   this.couch.Delete(id,rev).subscribe(res=>{
     console.log(res);
-    this.toastr.success("data deleted successfully");
+    this.toastr.success("Data Deleted Successfully");
     window. location. reload();
 
   })
 }else{
-  this.toastr.error("failed to delete");
+  this.toastr.error("Failed To Delete");
 }
 }
-display() {
+patientListView() {
 
   this.user = localStorage.getItem('user')
  
@@ -50,14 +50,17 @@ display() {
   }
 });
 }
+addPatient(){
+  this.router.navigate(['/quarantinedetail']);
+}
 backClick(){
   this.router.navigate(['/adminform']);
 }
-addAdditionalInfo(id:any,type:any)
+addAdditionalInfo(id:any,type:any,user?:any)
 {
   this.router.navigate(
     ['/guardiandetail'],
-    { queryParams: { id: id, 'type': type } }
+    { queryParams: { id: id, 'type': type ,data:JSON.stringify(user)} }
   );
   console.log(id,type);
 }

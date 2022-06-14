@@ -11,6 +11,7 @@ export class CouchdbService {
   dbPassword ='58de0ca6ebd4250a97d0a7d300191f68';
   basicAuth = 'Basic ' + btoa(this.dbUserName + ':' + this.dbPassword);
   object:any;
+  db:string='c_19_care';
 
   constructor(private http:HttpClient) { }
   httpOptions = {
@@ -19,9 +20,9 @@ export class CouchdbService {
       'Authorization': this.basicAuth
     })
   };
-  add(db: string, doc: object): Observable<{}> {
+  add( doc: object): Observable<{}> {
     
-    const url=this.url+db;
+    const url=this.url+this.db;
     return this.http.post(url, doc, this.httpOptions);
   }
   get(data:any): Observable<{}> {
@@ -83,6 +84,10 @@ export class CouchdbService {
     return this.http.post(url, data, {
       headers: { Authorization: basicAuth },
     });
+  }
+  editRecord(putObject){
+    const url = `${this.url}c_19_care/${putObject.id}/?rev=${putObject.rev}`
+    return this.http.put(url,putObject.dataObj,this.httpOptions)
   }
   getpatient(data:any){
     const url="https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/c_19_care/_design/patientpage/_view/detail"

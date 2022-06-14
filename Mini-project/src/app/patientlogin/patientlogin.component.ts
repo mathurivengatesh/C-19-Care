@@ -50,11 +50,10 @@ for (const i of this.object) {
   }
 }
 if (this.flag == 1) {
-  this.toastr.success("access granted")
+  this.toastr.success("Access Granted")
   this.router.navigate(['/patientdetail']);
 } else {
-  this.toastr.error("Invalid user")
-  location.reload();
+  this.toastr.error("Invalid User")
 }
 }
 }

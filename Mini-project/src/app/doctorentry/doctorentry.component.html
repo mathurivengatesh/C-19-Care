@@ -10,9 +10,8 @@
     </div>
 
     <form
-      action=""
       [formGroup]="doctorForm"
-      (ngSubmit)="storing(this.doctorForm.value)"
+      (ngSubmit)="doctorDetails(this.doctorForm.value)"
     >
       <h3>Doctor Entry</h3>
       <div class="box">

@@ -28,7 +28,7 @@
     height: 5%;
   }
   .search input{
-    margin-top: -4rem;
+    margin-top: -6rem;
    margin-left: 100rem;
    width: 20vw;
    height: 8vh;
@@ -36,7 +36,7 @@
   }
   
    .search img{
-    margin-top: -4rem;
+    margin-top: -6rem;
    width:40px;
    margin-left: -5rem;
 
@@ -53,4 +53,8 @@
   }
   h1{
     margin-left: 50rem;
+  }
+  .addpatient{
+    margin-left: 3rem;
+    margin-top: 2rem;
   }

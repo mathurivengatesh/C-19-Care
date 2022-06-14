@@ -19,7 +19,7 @@ docId:any=[];
 dataItem:any;
 value:any;
   constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) { 
-    this.store();
+    this.patientDataDisplay();
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ value:any;
 
     
    }
-  store(){
+  patientDataDisplay(){
   this.id = localStorage.getItem('patientid')
    
     let data = {
@@ -46,7 +46,7 @@ value:any;
       let  id:any = this.personalData[array]._id;
       localStorage.setItem("patient",id);
       
-    this.display();
+    this.addInfoDisplay();
     
     this.tabchange('personalform');
       console.log(this.personalData[array])
@@ -55,7 +55,7 @@ value:any;
     });
    }
   
-  display() {
+  addInfoDisplay() {
     this.id = localStorage.getItem('patient')
     let data = {
      selector: {
@@ -70,13 +70,13 @@ value:any;
      {
       this.guardianData = this.guardian
      console.log(this.guardianData[0]);
-     console.log(this.guardian[0].docname);
-     this.docId = this.guardian[0].docname;
+     console.log(this.guardian[0].doctor);
+     this.docId = this.guardian[0].doctor;
     this.couch.getDataById(this.docId).subscribe(dataItem =>{
       console.log(dataItem);
       this.value=dataItem;
-      this.guardian[0].docname=this.value.doctorname;
-      console.log(this.guardian[0].docname);
+      this.guardian[0].doctor=this.value.doctorname;
+      console.log(this.guardian[0].doctor);
     
     })}
 });
@@ -89,6 +89,6 @@ value:any;
   logout(){
     localStorage.clear();
     this.router.navigate(['/home'],{});
-    this.toastr.success("logged out");
+    this.toastr.success("Logged out Successfully");
   }
 }

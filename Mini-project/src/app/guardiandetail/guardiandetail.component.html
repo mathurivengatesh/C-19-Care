@@ -19,11 +19,13 @@
           <form
             action=""
             [formGroup]="guardianForm"
-            (ngSubmit)="storing(this.guardianForm.value)"
+            (ngSubmit)="guardianDetails(this.guardianForm.value)"
           >
             <div class="row">
               <div class="col-25">
-                <label for="status">Relationship Of Guardian To Patient:</label>
+                <label for="status" class="required"
+                  >Relationship Of Guardian To Patient:</label
+                >
               </div>
               <div class="col-75">
                 <input
@@ -48,7 +50,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="gfname">First Name</label>
+                <label for="gfname" class="required">First Name</label>
               </div>
               <div class="col-75">
                 <input
@@ -73,7 +75,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="glname">Last Name</label>
+                <label for="glname" class="required">Last Name</label>
               </div>
               <div class="col-75">
                 <input
@@ -96,7 +98,7 @@
 
             <div class="row">
               <div class="col-25">
-                <label for="gdob">Date of Birth:</label>
+                <label for="gdob" class="required">Date of Birth:</label>
               </div>
               <div class="col-75">
                 <input
@@ -116,7 +118,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="gage">Age:</label>
+                <label for="gage" class="required">Age:</label>
               </div>
               <div class="col-75">
                 <input
@@ -131,7 +133,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="gbloodgroup">Blood Group:</label>
+                <label for="gbloodgroup" class="required">Blood Group:</label>
               </div>
               <div class="col-75">
                 <input
@@ -160,7 +162,7 @@
 
             <div class="row">
               <div class="col-25">
-                <label for="ggender">Gender</label>
+                <label for="ggender" class="required">Gender</label>
               </div>
               <div class="col-75">
                 <select
@@ -177,7 +179,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="gmobileno">Mobile No:</label>
+                <label for="gmobileno" class="required">Mobile No:</label>
               </div>
               <div class="col-75">
                 <input
@@ -205,7 +207,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="subject">Address</label>
+                <label for="subject" class="required">Address</label>
               </div>
               <div class="col-75">
                 <textarea
@@ -257,13 +259,15 @@
 
             <div class="row">
               <div class="col-25">
-                <label for="doc-name">Name Of the Doctor:</label>
+                <label for="doc-name" class="required"
+                  >Name Of the Doctor:</label
+                >
               </div>
               <div class="col-75">
                 <select
                   id="docname"
-                  name="docname"
-                  formControlName="docname"
+                  name="doctor"
+                  formControlName="doctor"
                   class="form-control"
                 >
                   <option>Choose doctor</option>

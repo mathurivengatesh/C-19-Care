@@ -50,11 +50,10 @@ adminFormData(formvalue: any) {
     }
   }
   if (this.flag == 1) {
-    this.toastr.success("access granted")
+    this.toastr.success("Access Granted")
     this.router.navigate(['/adminform']);
   } else {
-    this.toastr.error("Invalid user")
-    location.reload();
+    this.toastr.error("Invalid User")
   }
 }
 }

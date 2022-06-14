@@ -23,17 +23,18 @@ resObj:any;
 object:any=[];
 doctorList:any=[];
 submit=false;
-
+userdata:any={};
  constructor(private couchdb:CouchdbService,private router:Router,private toastr:ToastrService,private activatedroute:ActivatedRoute,private api:ApiServiceService) {
     this.activatedroute.queryParams.subscribe(params =>{
       console.log(params);
       this.id=params.id;
       this.type=params.type;
+      this.userdata = JSON.parse(params.data)
       console.log(this.id);
       console.log(this.type);
     }
      );
-   this.display();
+   this.gurardianDataDisplay();
    this.dropDown();
    }
 ngOnInit(): void {
@@ -49,7 +50,7 @@ ngOnInit(): void {
         gaddress:new FormControl('',[Validators.required]),
         qtype:new FormControl('',[Validators.required]),
         days:new FormControl('',[Validators.required]),
-        docname:new FormControl('',[Validators.required]),
+        doctor:new FormControl('',[Validators.required]),
         nurname:new FormControl('',[Validators.required]),
         attenname:new FormControl('',[Validators.required]),
         driver:new FormControl('',[Validators.required]),
@@ -95,8 +96,8 @@ ngOnInit(): void {
     get days() {
       return this.guardianForm.get("days");
     } 
-    get docname() {
-      return this.guardianForm.get("docname");
+    get doctor() {
+      return this.guardianForm.get("doctor");
     } 
     get nurname() {
       return this.guardianForm.get("nurname");
@@ -122,21 +123,32 @@ ngOnInit(): void {
     }
   
   
-    storing(formData:any){
+    guardianDetails(formData:any){
       console.log(formData);
       formData["patient"]=this.id;
       formData["type"]=this.type;
       console.log("formData",formData);
-      this.couchdb.add("c_19_care",formData).subscribe(res=>{
+      this.couchdb.add(formData).subscribe(res=>{
         console.log(res);
         this.resObj=res;
-        this.toastr.success("data posted successfully")
+        this.userdata['childRecordExist'] = true
+        const putObj = {
+          id:this.userdata._id,
+          rev:this.userdata._rev,
+          dataObj:this.userdata
+        }
+        this.couchdb.editRecord(putObj).subscribe(resp=>{
+          console.log('res',resp)
+        },err=>{
+          console.error(err)
+        })
+        this.toastr.success("Data posted Successfully")
       },err=>{
         this.resObj=err;
-      this.toastr.error("failed to post data",this.resObj.error.reason)
+      this.toastr.error("Failed to post Data",this.resObj.error.reason)
       });
     }
-   display() {
+   gurardianDataDisplay() {
       let data = {
       selector: {
       patient:this.id,
@@ -150,9 +162,9 @@ ngOnInit(): void {
       this.guardian = this.guardian.docs;
        if(this.guardian.length>0){
        this.setFormValue();
-       this.toastr.error("data already exist ");
+       this.toastr.error("Data already Exist ");
        this.submit=true;
-      this.toastr.error("data can't be posted again");
+      this.toastr.error("Data can't be posted again");
         }
        });
     }
@@ -169,7 +181,7 @@ ngOnInit(): void {
      this.gaddress.setValue(this.guardian[0].gaddress);
      this.qtype.setValue(this.guardian[0].qtype);
      this.days.setValue(this.guardian[0].days);
-     this.docname.setValue(this.guardian[0].docname);
+     this.doctor.setValue(this.guardian[0].doctor);
      this.nurname.setValue(this.guardian[0].nurname);
      this.attenname.setValue(this.guardian[0].attenname);
      this.driver.setValue(this.guardian[0].driver);

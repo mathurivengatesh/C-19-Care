@@ -1,6 +1,9 @@
 <div class="back-button" (click)="backClick()">
   <img src="../../assets/images/back2.png" alt="backbutton" />
 </div>
+<div class="addpatient">
+  <button class="btn" (click)="addPatient()">Add New Patient</button>
+</div>
 <div class="search">
   <input type="text" [(ngModel)]="search" placeholder="search here" />
   <img src="../../assets/images/search-icon-dark.png" alt="search" />
@@ -41,8 +44,19 @@
       <td>{{ user.mobileno }}</td>
       <td>{{ user.address }}</td>
       <td>
-        <a class="btn" (click)="addAdditionalInfo(user._id, 'info')">
+        <a
+          class="btn"
+          *ngIf="!user?.childRecordExist"
+          (click)="addAdditionalInfo(user._id, 'info', user)"
+        >
           Add info
+        </a>
+        <a
+          class="btn"
+          *ngIf="user?.childRecordExist"
+          (click)="addAdditionalInfo(user._id, 'info', user)"
+        >
+          View info
         </a>
       </td>
       <td>

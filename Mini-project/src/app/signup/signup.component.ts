@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     this.couchdb.emailExist(email).subscribe((response:any)=>{
       console.log(response)
       if(response.docs.length >=1){
-      this.toastr.error("email already exist");
+      this.toastr.error("Email already exist");
       this.submit =false
       }
       else{
@@ -57,12 +57,12 @@ export class SignupComponent implements OnInit {
       if(this.resObj.errid=="non_200"){
         return this.toastr.error(this.resObj.name,this.resObj.message)
       }
-      this.toastr.success("registration success");
+      this.toastr.success("Registration Success");
       this.router.navigate(['/adminlogin']);
     },err=>{
       this.resObj=err;
       console.log(this.resObj);
-      this.toastr.error("registration cancelled"+err);
+      this.toastr.error("Registration Cancelled"+err);
     });
    
   }

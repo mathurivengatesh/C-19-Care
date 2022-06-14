@@ -14,7 +14,7 @@ export class DoctorentryComponent implements OnInit {
 doctorForm:FormGroup
 object:any=[];
 resObj:any;
-  formdata: any;
+formdata: any;
   constructor(private couchdb:CouchdbService,private toastr:ToastrService,private router:Router) {
     console.log("doctor entry") ;
   }
@@ -46,17 +46,21 @@ get age() {
   return this.doctorForm.get('age');
 } 
 
-storing(formdata:any){
+doctorDetails(formdata:any){
   console.log(formdata);
   console.log("formdata",formdata);
-  this.couchdb.add("c_19_care",formdata).subscribe(res=>{
+  if(this.doctorForm.valid){
+  this.couchdb.add(formdata).subscribe(res=>{
     console.log(res);
     this.resObj=res;
-this.toastr.success("data posted successfully");
+this.toastr.success("Data Posted Successfully");
   },err=>{
     this.resObj=err;
-    this.toastr.error("data failed to post",this.resObj.error.reason);
+    this.toastr.error("Data Failed To Post",this.resObj.error.reason);
   });
+}else{
+  this.toastr.error("Data Invalid");
+}
 }
 backClick(){
   this.router.navigate(['/adminform']);
