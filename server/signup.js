@@ -16,8 +16,6 @@ app.use(
 );
 
 app.post("/signup", (request, response) => {
-  console.log("signup");
-  console.log(request.body);
   const object = {
     email: request.body.email,
     mobileno: request.body.mobileno,
@@ -27,11 +25,8 @@ app.post("/signup", (request, response) => {
   };
 
   dbconnection.insert(object).then(res=>{
-    console.log("response");
-    console.log(res);
     response.send(res);
   }).catch(rej=>{
-    console.log("rejection");
 
     response.send(rej);
   });

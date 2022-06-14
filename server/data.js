@@ -8,7 +8,6 @@ let _tmp = "name";
 let cloudant = Cloudant({ url: url, username: username, password: password });
 
 let insert = function (paramsvalue) {
-  console.log(paramsvalue);
   return cloudant
     .use("c_19_care")
     .insert(paramsvalue);
