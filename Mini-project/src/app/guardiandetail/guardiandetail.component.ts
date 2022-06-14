@@ -162,9 +162,9 @@ ngOnInit(): void {
       this.guardian = this.guardian.docs;
        if(this.guardian.length>0){
        this.setFormValue();
-       this.toastr.error("Data already Exist ");
+       this.toastr.warning("Data already Exist ");
        this.submit=true;
-      this.toastr.error("Data can't be posted again");
+      this.toastr.warning("Data can't be posted again");
         }
        });
     }

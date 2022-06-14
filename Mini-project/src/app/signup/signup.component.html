@@ -40,8 +40,7 @@
         />
         <div
           *ngIf="
-            myForm.get('mobileno').invalid &&
-            (myForm.get('mobileno').dirty || myForm.get('mobileno').touched)
+            myForm.get('mobileno').invalid && myForm.get('mobileno').touched
           "
           class="text-danger"
         >
