@@ -18,12 +18,14 @@ lookupIdArray=[];
 docId:any=[];
 dataItem:any;
 value:any;
-  constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) {this.display(); 
-    this.store();}
+  constructor(private couch:CouchdbService,private router:Router,private toastr:ToastrService) { 
+    this.store();
+  }
 
   ngOnInit(): void {
     console.log("patientdetail");
-    this.tabchange('personalform');
+
+    
    }
   store(){
   this.id = localStorage.getItem('patientid')
@@ -43,6 +45,10 @@ value:any;
      for (const array in this.personalData) {
       let  id:any = this.personalData[array]._id;
       localStorage.setItem("patient",id);
+      
+    this.display();
+    
+    this.tabchange('personalform');
       console.log(this.personalData[array])
      }
      
@@ -59,19 +65,20 @@ value:any;
   }
   this.couch.get(data).subscribe(res => {
     this.guardian=res;
-    console.log(res);
     this.guardian = this.guardian.docs;
-    console.log(this.guardian);
-     this.guardianData = this.guardian
+    if(res['docs'])
+     {
+      this.guardianData = this.guardian
      console.log(this.guardianData[0]);
      console.log(this.guardian[0].docname);
      this.docId = this.guardian[0].docname;
     this.couch.getDataById(this.docId).subscribe(dataItem =>{
       console.log(dataItem);
-      this.value=data;
+      this.value=dataItem;
       this.guardian[0].docname=this.value.doctorname;
-      console.log(this.guardian.docname);
-    })
+      console.log(this.guardian[0].docname);
+    
+    })}
 });
   }
   id:any = "personalform";
