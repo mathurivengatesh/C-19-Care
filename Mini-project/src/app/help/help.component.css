@@ -1,5 +1,6 @@
 .reviews-section{
 	background-size: cover;
+    padding: 100px 0px;
 }
 .review-media {
     width: 100%;
@@ -21,9 +22,7 @@
     background: rgba(0,0,0,.6);
 }
 
-.reviews-section {
-    padding: 100px 0px;
-}
+
 
 .reviews-section h2 {
     color: rgb(16, 13, 13);
