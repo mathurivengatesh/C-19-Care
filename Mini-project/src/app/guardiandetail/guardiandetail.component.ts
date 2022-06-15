@@ -46,7 +46,7 @@ ngOnInit(): void {
         gage: new FormControl('',[Validators.required]),
         gbloodgroup: new FormControl('',[Validators.required]),
         ggender: new FormControl(''),
-        gmobileno: new FormControl('',[Validators.required]),
+        gmobileno: new FormControl('',[Validators.required,Validators.minLength(10)]),
         gaddress:new FormControl('',[Validators.required]),
         qtype:new FormControl('',[Validators.required]),
         days:new FormControl('',[Validators.required]),
@@ -162,9 +162,9 @@ ngOnInit(): void {
       this.guardian = this.guardian.docs;
        if(this.guardian.length>0){
        this.setFormValue();
-       this.toastr.warning("Data already Exist ");
+      
        this.submit=true;
-      this.toastr.warning("Data can't be posted again");
+      this.toastr.warning("Data already exist,can't be posted again");
         }
        });
     }

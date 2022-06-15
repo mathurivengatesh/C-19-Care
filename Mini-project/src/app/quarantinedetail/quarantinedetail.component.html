@@ -22,7 +22,7 @@
           >
             <div class="row">
               <div class="col-25">
-                <label for="fname">First Name</label>
+                <label for="fname" class="required">First Name</label>
               </div>
               <div class="col-75">
                 <input
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="lname">Last Name</label>
+                <label for="lname" class="required">Last Name</label>
               </div>
               <div class="col-75">
                 <input
@@ -70,7 +70,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="patientid">Patient Id:</label>
+                <label for="patientid" class="required">Patient Id:</label>
               </div>
               <div class="col-75">
                 <input
@@ -101,7 +101,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="dob">Date of Birth:</label>
+                <label for="dob" class="required">Date of Birth:</label>
               </div>
               <div class="col-75">
                 <input
@@ -121,7 +121,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="age">Age:</label>
+                <label for="age" class="required">Age:</label>
               </div>
               <div class="col-75">
                 <input
@@ -135,7 +135,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="bloodgroup">Blood Group:</label>
+                <label for="bloodgroup" class="required">Blood Group:</label>
               </div>
               <div class="col-75">
                 <input
@@ -150,7 +150,7 @@
 
             <div class="row">
               <div class="col-25">
-                <label for="gender">Gender</label>
+                <label for="gender" class="required">Gender</label>
               </div>
               <div class="col-75">
                 <select
@@ -166,13 +166,15 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="mobileno">Mobile No:</label>
+                <label for="mobileno" class="required">Mobile No:</label>
               </div>
               <div class="col-75">
                 <input
                   type="text"
                   id="mobileno"
                   formControlName="mobileno"
+                  minlength="10"
+                  maxlength="10"
                   class="form-control"
                   placeholder="enter mobileno"
                 />
@@ -180,7 +182,7 @@
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="subject">Address</label>
+                <label for="subject" class="required">Address</label>
               </div>
               <div class="col-75">
                 <textarea

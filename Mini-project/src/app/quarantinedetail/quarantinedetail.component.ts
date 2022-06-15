@@ -26,13 +26,13 @@ resObj:any;
  ngOnInit(): void {
       this.myForm = new FormGroup({
         fname: new FormControl('',[Validators.required,Validators.minLength(10)]),
-        lname: new FormControl('',[Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]),
+        lname: new FormControl('',[Validators.required, Validators.maxLength(10)]),
         patientid:new FormControl('',[Validators.email,Validators.required]),
         dob: new FormControl('',[Validators.required]),
         age: new FormControl('',[Validators.required]),
         bloodgroup: new FormControl('',[Validators.required]),
         gender:new FormControl(''),
-        mobileno: new FormControl('',[Validators.required]),
+        mobileno: new FormControl('',[Validators.required,Validators.minLength(10)]),
         address:new FormControl('',[Validators.required]),
         type:new FormControl('patient')
       })
