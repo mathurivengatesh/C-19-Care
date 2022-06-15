@@ -1,12 +1,12 @@
-const connection = require("express");
-const bodyparser = require("body-parser");
-const app = connection();
+let connection = require("express");
+let bodyparser = require("body-parser");
+let app = connection();
 app.disable("x-powered-by");
 let helmet = require("helmet");
 app.use(helmet.hidePoweredBy());
-const port = 8000;
-const cors = require("cors");
-const dbconnection = require("./data");
+let port = 8000;
+let cors = require("cors");
+let dbconnection = require("./data");
 app.use(connection.static("public"));
 app.use(bodyparser.json());
 app.use(
@@ -16,7 +16,7 @@ app.use(
 );
 
 app.post("/signup", (request, response) => {
-  const object = {
+  let object = {
     email: request.body.email,
     mobileno: request.body.mobileno,
     password: request.body.password,

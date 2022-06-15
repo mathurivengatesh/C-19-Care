@@ -1,5 +1,5 @@
-const Cloudant = require("@cloudant/cloudant");
-const { type } = require("express/lib/response");
+let Cloudant = require("@cloudant/cloudant");
+let { type } = require("express/lib/response");
 let url =
  "https://75c481c7-3349-4ad5-86c0-311dd22187eb-bluemix.cloudantnosqldb.appdomain.cloud/";
 let username = "apikey-v2-2mxwaz89u58vkezj2e5jfc41xn3komuaq1j49fhhmu8p";
