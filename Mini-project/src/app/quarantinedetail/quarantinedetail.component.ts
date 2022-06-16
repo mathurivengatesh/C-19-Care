@@ -26,7 +26,7 @@ resObj:any;
  ngOnInit(): void {
       this.myForm = new FormGroup({
         fname: new FormControl('',[Validators.required,Validators.minLength(10)]),
-        lname: new FormControl('',[Validators.required, Validators.maxLength(10)]),
+        lname: new FormControl('',[Validators.required]),
         patientid:new FormControl('',[Validators.email,Validators.required]),
         dob: new FormControl('',[Validators.required]),
         age: new FormControl('',[Validators.required]),

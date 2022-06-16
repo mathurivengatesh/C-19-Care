@@ -45,11 +45,11 @@ export class SignupComponent implements OnInit {
         this.submit =true
       }
     },err=>{
-      console.error(err)
+      console.log(err)
     })
   }
  
-  adduser(Formvalue:NgForm){
+  addUser(Formvalue:NgForm){
     console.log(Formvalue);
     this.api.add(Formvalue).subscribe(data=>{
       console.log(data);
